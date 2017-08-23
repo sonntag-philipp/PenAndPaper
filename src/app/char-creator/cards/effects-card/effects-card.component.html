@@ -1,0 +1,17 @@
+<md-card>
+  <md-card-subtitle>
+      2. Effekte des Charakters
+  </md-card-subtitle>
+  <md-card-content>
+    <md-list>
+      <md-list-item *ngFor="let item of charExtrasItems">{{ item.content }}</md-list-item>
+
+      <md-list-item>
+        <md-input-container>
+          <input mdInput placeholder="Hinzufügen:" style="width: 95%;" #input>
+        </md-input-container>
+        <button md-mini-fab (click)="onAddBonus(input)" style="margin-left: 1%;"><i class="material-icons">add</i></button>
+      </md-list-item>
+      </md-list>
+  </md-card-content>
+</md-card>
