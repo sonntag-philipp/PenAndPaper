@@ -1,8 +1,10 @@
+import { LoginService } from './login/login.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { 
   MdCardModule, 
@@ -16,7 +18,7 @@ import {
   MdSelectModule
 } from '@angular/material';
 
-import { CookieModule } from 'ngx-cookie'
+import { CookieModule, CookieService } from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
 import { CharCreatorComponent } from './char-creator/char-creator.component';
@@ -27,11 +29,15 @@ import { BaseCardComponent } from './char-creator/cards/base-card/base-card.comp
 import { EffectsCardComponent } from './char-creator/cards/effects-card/effects-card.component';
 import { SkillsCardComponent } from './char-creator/cards/skills-card/skills-card.component';
 import { SkillComponent } from './char-creator/cards/skills-card/skill/skill.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appPaths = [
   {path: '', component: HomeComponent},
   {path: 'play', component: GameComponent},
   {path: 'create', component: CharCreatorComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: ''}
 ]
 
@@ -45,9 +51,12 @@ const appPaths = [
     BaseCardComponent,
     EffectsCardComponent,
     SkillsCardComponent,
-    SkillComponent
+    SkillComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     CookieModule.forRoot(),
     RouterModule.forRoot(appPaths),
@@ -59,9 +68,10 @@ const appPaths = [
     MdListModule,
     MdSelectModule,
     FlexLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [LoginService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

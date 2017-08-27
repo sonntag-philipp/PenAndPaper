@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex="95%" fxFlex.gt-lg="30%" fxLayout="column" fxLayoutAlign="start">
+    
+    <md-card style="margin-top: 1%;">
+        <md-card-subtitle>Bitte melden Sie sich mit Ihrem Account an</md-card-subtitle>
+        <md-card-content>
+            <form #form="ngForm">
+              <table style="width: 100%">
+                <tr>
+                  <td>
+                    <md-input-container class="example-full-width" style="width: 100%">
+                      <input mdInput placeholder="Name:" name="username" ngModel required>
+                    </md-input-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <md-input-container class="example-full-width" style="width: 100%">
+                      <input type="password" mdInput placeholder="Passwort:" name="password" ngModel required>
+                    </md-input-container>
+                  </td>
+                </tr>
+              </table>
+            </form>
+        </md-card-content>
+        <md-card-actions>
+          <button md-button (click)="onSubmitLogin(form.value)">Einloggen</button>
+        </md-card-actions>
+    </md-card>
+  </div>
+</div>
