@@ -23,6 +23,8 @@ export class CharCreatorComponent implements OnInit {
     this.charExtrasItems.pop();
   }
 
+
+
   ngOnInit() {
   }
 

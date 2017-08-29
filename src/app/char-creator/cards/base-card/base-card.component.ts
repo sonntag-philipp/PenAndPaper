@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { CharCreatorService } from '../../char-creator.service';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-base-card',
   templateUrl: './base-card.component.html',
   styleUrls: ['./base-card.component.css']
 })
-export class BaseCardComponent implements OnInit {
+export class BaseCardComponent implements AfterViewInit {
 
-  constructor() { }
+  @ViewChild("baseForm") form: NgForm;
 
-  ngOnInit() {
+  constructor(private charCreatorService: CharCreatorService) { }
+
+  
+
+  ngAfterViewInit() {
+    this.charCreatorService.BaseForm = this.form;
   }
 
 }

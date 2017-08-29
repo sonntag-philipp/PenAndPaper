@@ -1,3 +1,4 @@
+import { CharCreatorService } from './char-creator/char-creator.service';
 import { LoginService } from './login/login.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +16,9 @@ import {
   MdToolbarModule,
   MdListModule,
   MdDialogModule,
-  MdSelectModule
+  MdSelectModule,
+  MdTabsModule,
+  MdTableModule
 } from '@angular/material';
 
 import { CookieModule, CookieService } from 'ngx-cookie';
@@ -67,11 +70,13 @@ const appPaths = [
     MdToolbarModule,
     MdListModule,
     MdSelectModule,
+    MdTabsModule,
+    MdTableModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
     HttpModule
   ],
-  providers: [LoginService, CookieService],
+  providers: [LoginService, CookieService, CharCreatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

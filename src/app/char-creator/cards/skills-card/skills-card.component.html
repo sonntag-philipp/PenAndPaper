@@ -3,13 +3,14 @@
     3. Skills des Charakters
   </md-card-subtitle>
   <md-card-content>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <div *ngFor="let sectorItem of skillSectors" fxLayout="column" fxLayoutAlign="space-around center">
-        <h4 style="text-align: center;"> {{ sectorItem.name }}</h4>
-        <app-skill *ngFor="let skillItem of sectorItem.skills" skillName="{{ skillItem.name }}"></app-skill>
-      </div>
-
-    
-    </div>
+    <md-tab-group width="100%"  fxLayout="column">
+      <md-tab label="{{ sectorItem.name }}" *ngFor="let sectorItem of skillSectors" >
+        <md-list style="padding-bottom: 1%;">
+          <md-list-item *ngFor="let skillItem of sectorItem.skills" style="margin-top: 1%;">
+            <app-skill skillName="{{ skillItem.name }}"></app-skill>
+          </md-list-item>
+        </md-list>
+      </md-tab>
+    </md-tab-group>
   </md-card-content>
 </md-card>
