@@ -10,10 +10,8 @@ import { NgForm } from '@angular/forms';
 export class EffectsCardComponent {
 
   constructor(private charCreatorService: CharCreatorService) { }
-
   
   public onNextCard(): void {
     this.charCreatorService.creationIndex++;
   }
-
 }
