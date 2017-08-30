@@ -15,19 +15,19 @@ export class CharacterModel {
   Profession: string;
 
   // Saves the life, mana or the experience status, can be extended the way the user wants to
-  Statuses: StatusModel[];
+  Statuses: StatusModel[] = [];
 
   // The items stored in the characters inventory
-  Inventory: ItemModel[];
+  Inventory: ItemModel[] = [];
 
   // The items equipped by the character
-  EquippedItems: ItemModel[];
+  EquippedItems: ItemModel[] = [];
 
   // The skills of the character
-  Skills: SkillModel[];
+  Skills: SkillModel[] = [];
 
   // Effects that are focused on the character
-  Effects: EffectModel[];
+  Effects: EffectModel[] = [];
 
   constructor() { }
 }

@@ -6,13 +6,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   templateUrl: './char-creator.component.html',
   styleUrls: ['./char-creator.component.css']
 })
-export class CharCreatorComponent implements OnInit {
-
-  private creationIndex: number = 2;
+export class CharCreatorComponent {
   
   constructor(private charCreatorService: CharCreatorService) { }
-
-  ngOnInit() {
-  }
 
 }

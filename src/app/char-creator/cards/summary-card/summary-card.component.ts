@@ -9,8 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SummaryCardComponent {
 
   constructor(private charCreatorService: CharCreatorService) {
-    console.log(charCreatorService.baseForm);
-    console.log(charCreatorService.skillForm);
+    
   }
 
 }

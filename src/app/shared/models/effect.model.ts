@@ -1,6 +1,10 @@
+import { StatusModel } from './status.model';
 export class EffectModel {
-  Name: string;
-  Description: string;
 
-  Strength: number;
+  constructor (
+    public Name: string, 
+    public Description: string, 
+    public Strength: number,
+    public Status: string
+  ) { }
 }

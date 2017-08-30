@@ -1,15 +1,25 @@
 <md-card>
   <md-card-title>Bonis und Malus</md-card-title>
-
+  <md-card-subtitle>
+    Es sind auch negative Werte möglich.
+  </md-card-subtitle>
   <md-card-content>
     <md-list>
-      <md-list-item *ngFor="let item of charExtrasItems">{{ item.content }}</md-list-item>
+      <md-list-item *ngFor="let item of charCreatorService.character.Effects">{{ item.Name }} - {{ item.Strength }} - {{ item.Status }}</md-list-item>
 
       <md-list-item>
         <md-input-container>
-          <input mdInput placeholder="Hinzufügen:" style="width: 95%;" #input>
+          <input mdInput placeholder="Name:" [(ngModel)]="name">
         </md-input-container>
-        <button md-mini-fab (click)="onAddEffect(input)" style="margin-left: 1%;"><i class="material-icons">add</i></button>
+        <md-input-container>
+          <input mdInput placeholder="Stärke:" type="number" [(ngModel)]="strength">
+        </md-input-container>
+        <md-select style="margin-left: 3%; margin-bottom: 5px;" [(ngModel)]="selectedStatus" placeholder="Status">
+          <md-option *ngFor="let item of charCreatorService.character.Statuses" [value]="item.Name">
+            {{ item.Name }}
+          </md-option>
+        </md-select>
+        <button md-mini-fab (click)="onAddEffect()" style="margin-left: 1%;"><i class="material-icons">add</i></button>
       </md-list-item>
     </md-list>
   </md-card-content>

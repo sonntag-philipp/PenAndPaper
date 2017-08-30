@@ -12,7 +12,6 @@ export class SkillsCardComponent {
   constructor(private charCreatorService: CharCreatorService) { }
   
   public onNextCard(form: NgForm): void {
-    this.charCreatorService.skillForm = form;
     this.charCreatorService.creationIndex++;
   }
 
