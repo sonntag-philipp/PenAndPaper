@@ -37,6 +37,7 @@ import { SkillsCardComponent } from './char-creator/cards/skills-card/skills-car
 import { SkillComponent } from './char-creator/cards/skills-card/skill/skill.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SummaryCardComponent } from './char-creator/cards/summary-card/summary-card.component';
 
 const appPaths = [
   {path: '', component: HomeComponent},
@@ -59,7 +60,8 @@ const appPaths = [
     SkillsCardComponent,
     SkillComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SummaryCardComponent
   ],
   imports: [
     FormsModule,

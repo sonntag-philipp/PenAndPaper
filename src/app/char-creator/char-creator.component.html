@@ -1,18 +1,4 @@
-
-<div fxLayout="row" fxLayoutAlign="center">
-  <div fxFlex="95%" fxFlex.gt-lg="60%" fxLayout="column" fxLayoutAlign="start">
-    
-    <app-base-card class="char-creator-card"></app-base-card>
-    <app-effects-card class="char-creator-card"></app-effects-card>
-    <app-skills-card class="char-creator-card"></app-skills-card>
-
-    <md-card style="margin-top: 1%; margin-bottom: 3%;">
-      <md-card-subtitle>
-        4. Abschluss
-      </md-card-subtitle>
-      <md-card-actions>
-        <button md-button>Eingaben bestätigen</button>
-      </md-card-actions>
-    </md-card>
-  </div>
-</div>
+<app-base-card    *ngIf="charCreatorService.creationIndex === 0" class="char-creator-card"></app-base-card>
+<app-effects-card *ngIf="charCreatorService.creationIndex === 1" class="char-creator-card"></app-effects-card>
+<app-skills-card  *ngIf="charCreatorService.creationIndex === 2" class="char-creator-card"></app-skills-card>
+<app-summary-card *ngIf="charCreatorService.creationIndex === 3" class="char-creator-card"></app-summary-card>

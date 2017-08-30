@@ -1,7 +1,6 @@
 <md-card>
-  <md-card-subtitle>
-    1. Grundeinstellungen des Charakters
-  </md-card-subtitle>
+  <md-card-title>Grundeinstellungen</md-card-title>
+
   <md-card-content>
     <form #baseForm="ngForm">
       <table style="width: 100%;">
@@ -25,14 +24,14 @@
           </td>
           <td>
             <md-input-container style="width: 95%;">
-              <input mdInput ngModel placeholder="Alter:" name="age">
+              <input mdInput ngModel placeholder="Alter:" type="number" name="age">
             </md-input-container>
           </td>
         </tr>
         <tr>
           <td>
             <md-input-container style="width: 95%;">
-              <input mdInput ngModel placeholder="Größe:" name="height">
+              <input mdInput ngModel placeholder="Größe:" type="number" name="height">
             </md-input-container>
           </td>
           <td>
@@ -43,5 +42,10 @@
         </tr>
       </table>
     </form>
+
+
   </md-card-content>
+  <md-card-actions align="end">
+    <button md-raised-button color="accent" (click)="onNextCard(baseForm)">Nächster Schritt</button>
+  </md-card-actions>
 </md-card>

@@ -1,3 +1,4 @@
+import { CharCreatorService } from './char-creator.service';
 import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
@@ -7,23 +8,9 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class CharCreatorComponent implements OnInit {
 
-  charExtrasItems = [];
+  private creationIndex: number = 2;
   
-  constructor() { }
-
-  onAddBonus(input: any){
-
-    if(input.value !== ''){
-      this.charExtrasItems.push({content: input.value, type: 'bonus'});
-      input.value = '';
-    }
-  }
-
-  onRemoveBonus(){
-    this.charExtrasItems.pop();
-  }
-
-
+  constructor(private charCreatorService: CharCreatorService) { }
 
   ngOnInit() {
   }

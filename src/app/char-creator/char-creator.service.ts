@@ -1,10 +1,14 @@
+import { CharacterModel } from '../shared/models/character.model';
 import { NgForm } from '@angular/forms';
 
 export class CharCreatorService {
 
-  BaseForm: NgForm;
+  public character: CharacterModel;
+  
+  public creationIndex: number = 0;
 
-  SaveCharacter(){
-
+  
+  constructor () {
+    this.character = new CharacterModel();
   }
 }
