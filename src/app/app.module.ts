@@ -1,3 +1,5 @@
+import { SocketIOService } from './shared/services/socketio.service';
+import { BackendService } from './shared/services/backend.service';
 import { CharCreatorService } from './char-creator/char-creator.service';
 import { LoginService } from './login/login.service';
 import { RouterModule } from '@angular/router';
@@ -18,7 +20,8 @@ import {
   MdDialogModule,
   MdSelectModule,
   MdTabsModule,
-  MdTableModule
+  MdTableModule,
+  MdGridListModule
 } from '@angular/material';
 
 import { CookieModule, CookieService } from 'ngx-cookie';
@@ -72,11 +75,12 @@ const appPaths = [
     MdSelectModule,
     MdTabsModule,
     MdTableModule,
+    MdGridListModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
     HttpModule
   ],
-  providers: [LoginService, CookieService, CharCreatorService],
+  providers: [CookieService, CharCreatorService, LoginService, BackendService, SocketIOService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

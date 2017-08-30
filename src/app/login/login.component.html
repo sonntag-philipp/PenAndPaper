@@ -1,22 +1,23 @@
-<div fxLayout="row" fxLayoutAlign="center">
+<div fxLayout="row" fxLayoutAlign="center" style="margin-top: 1%;">
   <div fxFlex="95%" fxFlex.gt-lg="30%" fxLayout="column" fxLayoutAlign="start">
     
     <md-card style="margin-top: 1%;">
-        <md-card-subtitle>Bitte melden Sie sich mit Ihrem Account an</md-card-subtitle>
+      <md-card-title>Anmeldung</md-card-title>
+        <md-card-subtitle>Bitte melden Sie sich mit Ihrem Account an. Ihre Accountdaten werden Ihnen gegebenfalls von einem Administrator mitgeteilt.</md-card-subtitle>
         <md-card-content>
             <form #form="ngForm">
               <table style="width: 100%">
                 <tr>
                   <td>
                     <md-input-container class="example-full-width" style="width: 100%">
-                      <input mdInput placeholder="Name:" name="username" ngModel required>
+                      <input mdInput placeholder="Name:" name="username" ngModel>
                     </md-input-container>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <md-input-container class="example-full-width" style="width: 100%">
-                      <input type="password" mdInput placeholder="Passwort:" name="password" ngModel required>
+                      <input type="password" mdInput placeholder="Passwort:" name="password" ngModel>
                     </md-input-container>
                   </td>
                 </tr>
@@ -24,7 +25,7 @@
             </form>
         </md-card-content>
         <md-card-actions>
-          <button md-button (click)="onSubmitLogin(form.value)">Einloggen</button>
+          <button md-raised-button color="accent" (click)="onSubmitLogin(form)">Einloggen</button>
         </md-card-actions>
     </md-card>
   </div>

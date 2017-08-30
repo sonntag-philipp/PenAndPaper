@@ -1,3 +1,16 @@
-<p>
-  dashboard works!
-</p>
+<div *ngIf="!(cookieService.getObject('session_id') == null)" fxLayout="row" fxLayoutAlign="center start" style="margin-top: 1%;">
+  <md-card>
+    <md-card-title>Dashboard</md-card-title>
+    <md-card-subtitle>Hier kannst du deine Charaktere verwalten und ein neues Spiel starten.</md-card-subtitle>
+    <md-card-content>
+      <md-grid-list cols="2" rowHeight="2:1">
+        <md-grid-tile>
+          <button md-raised-button color="primary">Neues Spiel</button>
+        </md-grid-tile>
+        <md-grid-tile>
+          <button md-raised-button color="primary">Spiel beitreten</button>
+        </md-grid-tile>
+      </md-grid-list>
+    </md-card-content>
+  </md-card>
+</div>
