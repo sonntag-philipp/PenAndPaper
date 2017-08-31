@@ -1,19 +1,16 @@
-import { IMessageModel } from '../interfaces/models/message.model';
+import { CookieService } from 'ngx-cookie';
+import { MessageModel } from '../models/message.model';
 import { Observable } from 'rxjs/Rx';
-import { Headers, Http, RequestOptionsArgs, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 @Injectable()
 export class BackendService {
 
-  private requestOptions: RequestOptionsArgs;
+  constructor(private http: Http, private cookieService: CookieService) { }
 
-  constructor(private http: Http) { }
-  
-
-  public sendRequest(msg: IMessageModel): Observable<Response> {
-
-    this.requestOptions.headers = new Headers({'Content-Type': 'application/json'});
-
-    return this.http.post("http://localhost:4200", msg, this.requestOptions);
+  public sendRequest(msg: MessageModel): Observable<Response> {
+    msg.sessionID = this.cookieService.get("session_id");
+    
+    return this.http.post("http://localhost:8080", JSON.stringify(msg));
   }
 }

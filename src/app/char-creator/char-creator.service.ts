@@ -4,18 +4,20 @@ import { NgForm } from '@angular/forms';
 
 export class CharCreatorService {
 
-  public character: CharacterModel;
-  
+  // Defines the card index of the char-creator component.
   public creationIndex: number = 0;
 
-  private m: StatusModel;
-
+  public character: CharacterModel;
   
+
   constructor () {
     this.character = new CharacterModel();
 
-
     this.character.Statuses.push(new StatusModel("Lebenspunkte", 400, 400));
     this.character.Statuses.push(new StatusModel("Manapunkte", 200, 200));
+  }
+
+  public saveChar(): void {
+    
   }
 }

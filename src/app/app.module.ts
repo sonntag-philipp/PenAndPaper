@@ -1,7 +1,8 @@
+import { PlatformLocation } from '@angular/common/src/location/platform_location';
+import { Location } from '@angular/common';
 import { SocketIOService } from './shared/services/socketio.service';
 import { BackendService } from './shared/services/backend.service';
 import { CharCreatorService } from './char-creator/char-creator.service';
-import { LoginService } from './login/login.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -82,7 +83,7 @@ const appPaths = [
     BrowserAnimationsModule,
     HttpModule
   ],
-  providers: [CookieService, CharCreatorService, LoginService, BackendService, SocketIOService],
+  providers: [CookieService, CharCreatorService, BackendService, SocketIOService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
+import { Response } from '@angular/http';
+import { MessageModel } from '../shared/models/message.model';
+import { BackendService } from '../shared/services/backend.service';
 import { CookieService } from 'ngx-cookie';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 
@@ -9,26 +11,29 @@ import { NgForm } from "@angular/forms";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor(private loginService: LoginService, private router: Router, private cookieService: CookieService) { }
-
-  ngOnInit() {
-  }
+  constructor(private router: Router, private cookieService: CookieService, private backendService: BackendService) { }
 
   onSubmitLogin(form: NgForm){
-    // this.loginService.login(value).subscribe(
-    //   (response) => this.cookieService.putObject('pnp-login', value),
-    //   (error) => console.log(error)
-    // );
-    // this.cookieService.putObject('pnp-login', form);
 
-    this.loginService.login(form.value.username, form.value.password);
-
-
+    this.backendService.sendRequest(
+      new MessageModel(
+        'login', 
+        JSON.stringify({username: form.value.username, password: form.value.password}
+        )
+      )
+    ).subscribe(
+      (response: Response) => {
+        
+        console.log(JSON.parse(response.text()).session_id);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
 
     this.router.navigate(['/dashboard/']);
-
   }
 
 }
