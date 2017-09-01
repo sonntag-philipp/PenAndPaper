@@ -17,16 +17,10 @@ export class LoginComponent {
 
   onSubmitLogin(form: NgForm){
 
-    this.backendService.sendRequest(
-      new MessageModel(
-        'login', 
-        JSON.stringify({username: form.value.username, password: form.value.password}
-        )
-      )
-    ).subscribe(
+    this.backendService.sendLoginRequest(form.value.username, form.value.password).subscribe(
       (response: Response) => {
-        
-        console.log(JSON.parse(response.text()).session_id);
+        this.cookieService.put("session_id", JSON.parse(response.text()).session_id);
+        console.log("Successfully logged in!" + JSON.parse(response.text()).session_id);
       },
       (error: any) => {
         console.log(error);

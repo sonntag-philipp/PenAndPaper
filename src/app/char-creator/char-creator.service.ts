@@ -9,7 +9,6 @@ export class CharCreatorService {
 
   public character: CharacterModel;
   
-
   constructor () {
     this.character = new CharacterModel();
 

@@ -9,8 +9,25 @@ export class BackendService {
   constructor(private http: Http, private cookieService: CookieService) { }
 
   public sendRequest(msg: MessageModel): Observable<Response> {
-    msg.sessionID = this.cookieService.get("session_id");
+
+    if((this.cookieService.get("session_id") === undefined)) {
+      console.log("Please log in!");
+    } else {
+      msg.sessionID = this.cookieService.get("session_id");
+    }
     
     return this.http.post("http://localhost:8080", JSON.stringify(msg));
+  }
+
+  public sendLoginRequest(username: string, password: string): Observable<Response> {
+    return this.http.post("http://localhost:8080", 
+      JSON.stringify(
+        new MessageModel(
+          "login", 
+          JSON.stringify({username: username, password: password})
+        )
+      )
+    );
+
   }
 }
