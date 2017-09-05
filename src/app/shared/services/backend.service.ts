@@ -24,7 +24,8 @@ export class BackendService {
       JSON.stringify(
         new MessageModel(
           "login", 
-          JSON.stringify({username: username, password: password})
+          JSON.stringify({username: username, password: password}),
+          ""
         )
       )
     );

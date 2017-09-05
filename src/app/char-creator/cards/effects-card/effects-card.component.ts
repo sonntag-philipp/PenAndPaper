@@ -27,7 +27,7 @@ export class EffectsCardComponent {
   }
 
   private onAddEffect(): void {
-    this.charCreatorService.character.Effects.push(new EffectModel(this.name, "Not available", this.strength, this.selectedStatus));
+    this.charCreatorService.character.effects.push(new EffectModel(this.name, "Not available", this.strength, this.selectedStatus));
 
     this.selectedStatus = "";
     this.name = "";

@@ -1,0 +1,20 @@
+<md-card>
+    <md-card-title>
+      Ausgerüstet
+    </md-card-title>
+    <md-card-content>
+      <md-list>
+        <md-list-item *ngFor="let item of gameService.character.equippedItems">
+          <p>{{ item.name }} (
+            <font *ngIf="(item.effect.strength > 0)" color="#00cc00">
+              +{{ item.effect.strength }} {{ item.effect.description }}
+            </font>
+            <font *ngIf="(item.effect.strength < 0)" color="#e60000">
+              {{ item.effect.strength }} {{ item.effect.description }}
+            </font>
+            )
+          </p>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>

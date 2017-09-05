@@ -1,3 +1,5 @@
+import { ViewComponent } from './game/view/view.component';
+import { GameModule } from './game/game.module';
 import { PlatformLocation } from '@angular/common/src/location/platform_location';
 import { Location } from '@angular/common';
 import { SocketIOService } from './shared/services/socketio.service';
@@ -30,7 +32,6 @@ import { CookieModule, CookieService } from 'ngx-cookie';
 import { AppComponent } from './app.component';
 import { CharCreatorComponent } from './char-creator/char-creator.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { GameComponent } from './game/game.component';
 import { HomeComponent } from './home/home.component';
 import { BaseCardComponent } from './char-creator/cards/base-card/base-card.component';
 import { EffectsCardComponent } from './char-creator/cards/effects-card/effects-card.component';
@@ -42,10 +43,10 @@ import { SummaryCardComponent } from './char-creator/cards/summary-card/summary-
 
 const appPaths = [
   {path: '', component: HomeComponent},
-  {path: 'play', component: GameComponent},
   {path: 'create', component: CharCreatorComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'game', component: ViewComponent},
   {path: '**', redirectTo: ''}
 ]
 
@@ -54,7 +55,6 @@ const appPaths = [
     AppComponent,
     CharCreatorComponent,
     ToolbarComponent,
-    GameComponent,
     HomeComponent,
     BaseCardComponent,
     EffectsCardComponent,
@@ -81,7 +81,8 @@ const appPaths = [
     MdGridListModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    HttpModule
+    HttpModule,
+    GameModule
   ],
   providers: [CookieService, CharCreatorService, BackendService, SocketIOService],
   bootstrap: [AppComponent]

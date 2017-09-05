@@ -1,8 +1,12 @@
 export class StatusModel {
 
-  constructor(
-    public Name: string, 
-    public MaxValue: number,
-    public Value: number
-  ) { }
+  name: string;
+  maxValue: number;
+  value: number;
+
+  constructor(name: string, value: number, maxValue: number) {
+    this.name = name;
+    this.maxValue = maxValue;
+    this.value = value;
+  }
 }

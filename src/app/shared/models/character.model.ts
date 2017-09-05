@@ -5,29 +5,30 @@ import { ItemModel } from './item.model';
 
 export class CharacterModel {
 
-  Level : number;
+  level: number;
   
-  Name: string;
-  Height: string;
-  Age: string;
-  Nation: string;
-  Religion: string;
-  Profession: string;
+  name: string;
+  title: string;
+  height: string;
+  age: string;
+  nation: string;
+  religion: string;
+  profession: string;
 
   // Saves the life, mana or the experience status, can be extended the way the user wants to
-  Statuses: StatusModel[] = [];
+  statuses: StatusModel[] = [];
 
   // The items stored in the characters inventory
-  Inventory: ItemModel[] = [];
+  inventory: ItemModel[] = [];
 
   // The items equipped by the character
-  EquippedItems: ItemModel[] = [];
+  equippedItems: ItemModel[] = [];
 
   // The skills of the character
-  Skills: SkillModel[] = [];
+  skills: SkillModel[] = [];
 
   // Effects that are focused on the character
-  Effects: EffectModel[] = [];
+  effects: EffectModel[] = [];
 
   constructor() { }
 }
