@@ -1,9 +1,0 @@
-<md-card>
-  <md-card-content>
-    <div *ngFor="let item of gameService.character.statuses">
-      <h3 style="margin-bottom: 0.5%;">{{ item.name }}</h3>
-      <md-progress-bar value="{{ getPercentage(item) }}"></md-progress-bar>
-      <p style="margin-top: 0%;">{{ item.value }}/{{ item.maxValue }}</p>
-    </div>
-  </md-card-content>
-</md-card>
