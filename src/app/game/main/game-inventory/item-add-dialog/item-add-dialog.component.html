@@ -1,0 +1,17 @@
+<h2 md-dialog-title style="margin-bottom: 0.2%;">Item hinzufügen</h2>
+<md-dialog-content>
+    <md-form-field>
+      <input mdInput placeholder="Name" #name>
+    </md-form-field>
+    <md-form-field>
+      <input mdInput placeholder="Effekt" #effect>
+    </md-form-field>
+    <md-form-field>
+      <input mdInput type="number" placeholder="Preis" #price>
+    </md-form-field>
+    <md-checkbox #equipabble>Ausrüstbar</md-checkbox>
+    <md-checkbox #usable>Benutzbar</md-checkbox>
+</md-dialog-content>
+<md-dialog-actions>
+  <button (click)="onBtnAdd(name.value, effect.value, price.value, equipabble.checked, usable.checked);" md-button>Hinzufügen</button>
+</md-dialog-actions>

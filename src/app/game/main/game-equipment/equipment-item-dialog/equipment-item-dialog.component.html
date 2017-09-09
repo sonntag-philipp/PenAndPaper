@@ -1,0 +1,9 @@
+<h2 md-dialog-title style="margin-bottom: 0.2%;">{{ this.data.name }}</h2>
+<md-dialog-content>
+  <p class="description">{{ this.data.description }}</p>
+</md-dialog-content>
+<md-dialog-actions>
+  <button (click)="onBtnUnequip();" *ngIf="this.data.equippable" md-button>Ablegen</button>
+  <button (click)="onBtnThrow();" md-button>Wegwerfen</button>
+  <button (click)="onBtnSell();" md-button>Verkaufen</button>
+</md-dialog-actions>
