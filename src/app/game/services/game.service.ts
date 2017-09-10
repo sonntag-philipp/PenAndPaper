@@ -45,8 +45,8 @@ export class GameService {
 
     this.addEquipment(new ItemModel("Schild", "+10HP", 0.1, true, false));
     this.addEquipment(new ItemModel("Schwert", "+9000HP", 0.1, true, false));
-  } 
- 
+  }
+
   public addEquipment(item: ItemModel): void {
     if(item.name === "" || item.effect === "" || item.price === null) return;
 

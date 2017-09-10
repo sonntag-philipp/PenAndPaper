@@ -6,15 +6,14 @@ export class CharacterModel {
   public title: string;
   public age: number;
   public nation: string;
+  public profession: string;
 
   public maxLife: number;
 
 
-  public skills = {
-    handeln: [],
-    wissen: [],
-    interagieren: []
-  }
+  
+
+  public skills: any = [];
 
   public inventory: ItemModel[] = [];
   public equipped: ItemModel[] = [];

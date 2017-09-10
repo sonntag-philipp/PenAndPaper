@@ -1,0 +1,31 @@
+<md-card>
+  <md-card-title>Erstellung des Charakters:</md-card-title>
+  <md-card-content style="font-size: 14pt;">
+      <table style="width: 100%;">
+        <tr>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.name" mdInput placeholder="Name">
+            </md-form-field>
+          </td>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.title"  mdInput placeholder="Titel">
+            </md-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.nation"  mdInput placeholder="Volk">
+            </md-form-field>
+          </td>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.profession"  mdInput placeholder="Profession">
+            </md-form-field>
+          </td>
+        </tr>
+      </table>
+  </md-card-content>
+</md-card>

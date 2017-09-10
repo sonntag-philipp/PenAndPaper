@@ -1,0 +1,14 @@
+<md-table #table [dataSource]="dataSource">
+  <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+  <md-row (click)="onSelectItem(row);" *mdRowDef="let row; columns: displayedColumns;"></md-row>
+
+  <ng-container mdColumnDef="name">
+    <md-header-cell *mdHeaderCellDef>Name. </md-header-cell>
+    <md-cell *mdCellDef="let element" >{{ element.name }}</md-cell>
+  </ng-container>
+  
+  <ng-container mdColumnDef="chance">
+    <md-header-cell *mdHeaderCellDef>Chance. </md-header-cell>
+    <md-cell *mdCellDef="let element">{{ element.chance }}</md-cell>
+  </ng-container>
+</md-table>
