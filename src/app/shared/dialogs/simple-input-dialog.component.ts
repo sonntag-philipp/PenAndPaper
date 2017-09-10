@@ -15,7 +15,7 @@ export class SimpleInputDialog {
 
   }
 
-  private onBtnClose(): void {
+  public onBtnClose(): void {
     this.dialogRef.close(this.data);
   }
   

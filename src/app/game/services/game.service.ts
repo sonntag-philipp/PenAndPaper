@@ -24,22 +24,6 @@ export class GameService {
     this.inventorySubject = new BehaviorSubject<ItemModel[]>(this.character.inventory);
     this.equipmentSubject = new BehaviorSubject<ItemModel[]>(this.character.equipped);
 
-
-    this.character.skills.handeln.push(new SkillModel("Schleichen", 43));
-    this.character.skills.handeln.push(new SkillModel("Diebstahl", 43));
-    this.character.skills.handeln.push(new SkillModel("Schlösserknacken", 43));
-    this.character.skills.handeln.push(new SkillModel("Attentat", 43));
-    this.character.skills.handeln.push(new SkillModel("Spurenlesen", 43));
-    this.character.skills.wissen.push(new SkillModel("Stadtwissen", 43));
-    this.character.skills.wissen.push(new SkillModel("Magiekunde", 43));
-    this.character.skills.wissen.push(new SkillModel("Heilkunde", 43));
-    this.character.skills.wissen.push(new SkillModel("Sprachen und Schriften", 43));
-    this.character.skills.wissen.push(new SkillModel("Giftkunde", 43));
-    this.character.skills.interagieren.push(new SkillModel("Täuschen", 43));
-    this.character.skills.interagieren.push(new SkillModel("Ablenken", 43));
-    this.character.skills.interagieren.push(new SkillModel("Sinnesschärfe", 43));
-    this.character.skills.interagieren.push(new SkillModel("Überreden", 43));
-    this.character.skills.interagieren.push(new SkillModel("Einschüchtern", 43));
     this.addInventory(new ItemModel("Schild", "+10HP", 0.1, true, false));
     this.addInventory(new ItemModel("Magischer Trank", "+9000HP", 0.1, false, true));
 

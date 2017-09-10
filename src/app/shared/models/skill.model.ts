@@ -6,7 +6,7 @@ export class SkillModel {
   }
 
   public name: string;
-  public _chance: number;
+  private _chance: number;
   set chance(chance: number) {
     if(chance <= 100 && chance >= 0) this._chance = chance;
   }

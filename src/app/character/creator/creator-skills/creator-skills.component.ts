@@ -29,7 +29,7 @@ export class CreatorSkillsComponent {
   }
 
   public onChangeTabs(value: number) {
-
+    console.log(this.creatorService.character);
     this.creatorService.changeCurrentSkills(this.creatorService.character.skills[value].skills);
   }
 

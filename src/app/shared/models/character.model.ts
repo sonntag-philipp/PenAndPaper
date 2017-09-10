@@ -8,7 +8,13 @@ export class CharacterModel {
   public nation: string;
   public profession: string;
 
-  public maxLife: number;
+  public maxLife: number = 100;
+  public maxMana: number = 50;
+
+  public gender: string;
+  public religion: string;
+
+  public height: number;
 
 
   
@@ -19,7 +25,7 @@ export class CharacterModel {
   public equipped: ItemModel[] = [];
 
   // Statuses
-  public _life: number;
+  public _life: number = this.maxLife;
   set life(life: number) {
     if(life <= this.maxLife) this._life = life;
   }
@@ -27,8 +33,7 @@ export class CharacterModel {
     return this._life;
   }
 
-  public maxMana: number;
-  public _mana: number;
+  public _mana: number = this.maxMana;
   set mana(mana: number) {
     if(mana <= this.maxMana) this._mana = mana;
   }

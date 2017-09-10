@@ -11,6 +11,11 @@ export class RestService {
   }
 
   public getAvailableSkills(skillTree: string): Observable<Object> {
-    return this.http.get("http://localhost:8080/skills/" + skillTree + "/");
+    return this.http.get("http://api.pnp.delaiyoid.de:8080/get/skills/" + skillTree + "/");
+  }
+
+  public putCharacter(character: string): Observable<Object> {
+
+    return this.http.post("http://api.pnp.delaiyoid.de:8080/put/character/", character);
   }
 }

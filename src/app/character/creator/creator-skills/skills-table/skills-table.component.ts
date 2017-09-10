@@ -15,7 +15,7 @@ export class SkillsTableComponent implements OnInit {
   
   public displayedColumns = ['name', 'chance'];
 
-  private dataSource: SkillDataSource;
+  public dataSource: SkillDataSource;
 
   constructor(public dialog: MdDialog, public creatorService: CreatorService) { 
     this.dataSource = new SkillDataSource(creatorService);

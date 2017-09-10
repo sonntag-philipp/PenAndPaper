@@ -26,6 +26,30 @@
             </md-form-field>
           </td>
         </tr>
+        <tr>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.height"  mdInput placeholder="Größe" type="number">
+            </md-form-field>
+          </td>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.age"  mdInput placeholder="Alter" type="number">
+            </md-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.gender"  mdInput placeholder="Geschlecht">
+            </md-form-field>
+          </td>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.character.religion"  mdInput placeholder="Religion">
+            </md-form-field>
+          </td>
+        </tr>
       </table>
   </md-card-content>
 </md-card>
