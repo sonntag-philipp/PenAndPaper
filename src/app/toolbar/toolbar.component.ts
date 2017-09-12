@@ -1,3 +1,5 @@
+import { CharacterService } from '../shared/services/character.service';
+import { ToolbarService } from './toolbar.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public toolbarService: ToolbarService, 
+    private characterService: CharacterService
+  ) { }
 
   ngOnInit() {
   }

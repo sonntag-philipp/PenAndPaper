@@ -1,4 +1,6 @@
-import { RestService } from './../../shared/services/rest.service';
+import { HttpClient } from '@angular/common/http';
+import { CharacterService } from './../../shared/services/character.service';
+import { ToolbarService } from './../../toolbar/toolbar.service';
 import { CreatorService } from './../services/creator.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,20 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatorComponent implements OnInit {
 
-  constructor(public creatorService: CreatorService, public restService: RestService) { }
-
+  constructor(
+    public toolbarService: ToolbarService
+  ) { }
+ 
   ngOnInit() {
+    this.toolbarService.title = "Charakter Editor";
+    this.toolbarService.saveBtn = true;
   }
-
-  public onBtnSave(): void {
-    this.restService.putCharacter(JSON.stringify(this.creatorService.character)).subscribe(
-      (result) => {
-        console.log(result);
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
-  }
-
 }

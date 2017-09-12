@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SkillsTableComponent } from './skills-table.component';
+import { CreatorEffectsComponent } from './creator-effects.component';
 
-describe('SkillsTableComponent', () => {
-  let component: SkillsTableComponent;
-  let fixture: ComponentFixture<SkillsTableComponent>;
+describe('CreatorEffectsComponent', () => {
+  let component: CreatorEffectsComponent;
+  let fixture: ComponentFixture<CreatorEffectsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SkillsTableComponent ]
+      declarations: [ CreatorEffectsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SkillsTableComponent);
+    fixture = TestBed.createComponent(CreatorEffectsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

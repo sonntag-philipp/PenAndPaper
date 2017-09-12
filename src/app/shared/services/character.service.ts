@@ -1,12 +1,61 @@
+import { CharPostResponseModel } from './../models/char-post-response.model';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { HttpClient } from '@angular/common/http';
+import { Effects } from './../classes/effects.class';
+import { SkillTree } from './../classes/skills-tree.class';
+import { Equipment } from '../classes/equipment.class';
+import { Inventory } from './../classes/inventory.class';
 import { CharacterModel } from './../models/character.model';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class CharacterService {
 
-  public character: CharacterModel;
+  public character: CharacterModel = new CharacterModel();
 
-  constructor() {
-    
+  // Classes that provide an array of the explicit data and also an behaviorsubject for any views.
+  public inventory: Inventory;
+  public equipment: Equipment;
+  public skillTree: SkillTree;
+  public effects:   Effects;
+
+
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService
+  ) {
+    this.character = new CharacterModel();
+
+    this.inventory  = new Inventory(this.character.inventory);
+    this.equipment  = new Equipment(this.character.equipment);
+    this.skillTree  = new SkillTree(this.character.skills);
+    this.effects    = new Effects(this.character.effects);
+  }
+
+
+  public postCharacter() {
+    console.log("Posting character...");
+
+    this.http.post<CharPostResponseModel>("http://api.pnp.delaiyoid.de/character/", JSON.stringify(this.character)).subscribe(
+      (result) => {
+        console.log(result);
+        this.cookieService.putObject(result.guid , this.character.name);
+      },
+      (error) => {
+        prompt("Error while accessing API.");
+      }
+    )
+  }
+
+  public getCharacter(guid: string) {
+    this.http.get<CharacterModel>("http://api.pnp.delaiyoid.de/character/" + guid).subscribe(
+      (result) => {
+        this.character = result;
+      },
+      (error) => {
+        prompt("Error while accessing API.");
+      }
+    )
   }
 }

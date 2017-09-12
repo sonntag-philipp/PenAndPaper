@@ -17,8 +17,10 @@ import {
   MdTableModule,
   MdTabsModule
 } from '@angular/material';
+import { CreatorEffectsComponent } from './creator/creator-effects/creator-effects.component';
+import { CreatorExtrasComponent } from './creator/creator-extras/creator-extras.component';
+import { EffectsTableComponent } from './creator/creator-effects/effects-table/effects-table.component';
 import { CreatorSkillsComponent } from './creator/creator-skills/creator-skills.component';
-import { SkillsTableComponent } from './creator/creator-skills/skills-table/skills-table.component';
 
 @NgModule({
   imports: [
@@ -37,8 +39,10 @@ import { SkillsTableComponent } from './creator/creator-skills/skills-table/skil
   declarations: [
     CreatorComponent,
     CreatorBaseComponent,
-    CreatorSkillsComponent,
-    SkillsTableComponent
+    CreatorEffectsComponent,
+    CreatorExtrasComponent,
+    EffectsTableComponent,
+    CreatorSkillsComponent
   ],
   providers: [CreatorService, CookieService]
 })

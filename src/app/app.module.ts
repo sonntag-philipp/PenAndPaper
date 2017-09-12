@@ -1,3 +1,5 @@
+import { CharacterService } from './shared/services/character.service';
+import { ToolbarService } from './toolbar/toolbar.service';
 import { SimpleInputDialog } from './shared/dialogs/simple-input-dialog.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +8,6 @@ import { CharacterModule } from './character/character.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RestService } from './shared/services/rest.service';
 import { SocketService } from './shared/services/socket.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -46,7 +47,7 @@ import { NewComponent } from './new/new.component';
   entryComponents: [
     SimpleInputDialog
   ],
-  providers: [RestService, SocketService],
+  providers: [SocketService, ToolbarService, CharacterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

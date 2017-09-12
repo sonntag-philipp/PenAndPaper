@@ -14,34 +14,22 @@ export class GameService {
 
   constructor() {
     this.character = new CharacterModel();
-    this.character.name = "Geralt von Riva";
-    this.character.title = "Schlächter von Blaviken";
-    this.character.maxLife = 400;
-    this.character.maxMana = 400;
-    this.character.mana = 400;
-    this.character.life = 276;
 
     this.inventorySubject = new BehaviorSubject<ItemModel[]>(this.character.inventory);
-    this.equipmentSubject = new BehaviorSubject<ItemModel[]>(this.character.equipped);
-
-    this.addInventory(new ItemModel("Schild", "+10HP", 0.1, true, false));
-    this.addInventory(new ItemModel("Magischer Trank", "+9000HP", 0.1, false, true));
-
-    this.addEquipment(new ItemModel("Schild", "+10HP", 0.1, true, false));
-    this.addEquipment(new ItemModel("Schwert", "+9000HP", 0.1, true, false));
+    this.equipmentSubject = new BehaviorSubject<ItemModel[]>(this.character.equipment);
   }
 
   public addEquipment(item: ItemModel): void {
     if(item.name === "" || item.effect === "" || item.price === null) return;
 
 
-    this.character.equipped.push(item);
-    this.equipmentSubject.next(this.character.equipped.slice());
+    this.character.equipment.push(item);
+    this.equipmentSubject.next(this.character.equipment.slice());
   }
 
   public removeEquipment(item: ItemModel): void {
-    this.character.equipped.splice(this.character.equipped.indexOf(item), 1);
-    this.equipmentSubject.next(this.character.equipped);
+    this.character.equipment.splice(this.character.equipment.indexOf(item), 1);
+    this.equipmentSubject.next(this.character.equipment);
   }
   
 

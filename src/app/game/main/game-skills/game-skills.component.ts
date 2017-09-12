@@ -20,9 +20,9 @@ export class GameSkillsComponent {
   }
 
   public getSkills(section: string): SkillDataSource {
-    if(section === "handeln") return new SkillDataSource(this.gameService.character.skills.handeln);
-    if(section === "wissen") return new SkillDataSource(this.gameService.character.skills.wissen);
-    if(section === "interagieren") return new SkillDataSource(this.gameService.character.skills.interagieren);
+    if(section === "handeln") return new SkillDataSource(this.gameService.character.skills);
+    if(section === "wissen") return new SkillDataSource(this.gameService.character.skills);
+    if(section === "interagieren") return new SkillDataSource(this.gameService.character.skills);
   }
 
 }

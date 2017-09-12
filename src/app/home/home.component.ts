@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Rx';
+import { ToolbarService } from './../toolbar/toolbar.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public toolbarService: ToolbarService) { }
 
   ngOnInit() {
+    this.toolbarService.saveBtn = false;
+    this.toolbarService.title = "Pen and Paper";
   }
 
 }

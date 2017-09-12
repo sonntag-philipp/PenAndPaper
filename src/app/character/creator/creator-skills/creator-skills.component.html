@@ -1,22 +1,6 @@
 <md-card>
   <md-card-title>Skills:</md-card-title>
   <md-card-content>
-    <md-progress-bar mode="determinate" value="{{ creatorService.skillPointsAvailable / creatorService.maxSkillPoints * 100 }}"></md-progress-bar>
-    <p style="margin-top: 0%; font-size: 11pt;">{{ creatorService.skillPointsAvailable }}/{{ creatorService.maxSkillPoints }}</p>
-
-    <md-tab-group (selectChange)="onChangeTabs(tabgroup.selectedIndex);" #tabgroup>
-      <md-tab label="Handeln">
-        <app-skills-table></app-skills-table>
-      </md-tab>
-      <md-tab label="Wissen">
-        <app-skills-table></app-skills-table>
-      </md-tab>
-      <md-tab label="Interagieren">
-        <app-skills-table></app-skills-table>
-      </md-tab>
-    </md-tab-group>
+    
   </md-card-content>
-  <md-card-actions>
-    <button md-raised-button color="accent" (click)="onBtnAddSkill();">Skill hinzufügen</button>
-  </md-card-actions>
 </md-card>
