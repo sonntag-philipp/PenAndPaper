@@ -12,11 +12,14 @@ import { Component, OnInit } from '@angular/core';
 export class CreatorComponent implements OnInit {
 
   constructor(
-    public toolbarService: ToolbarService
+    public toolbarService: ToolbarService,
+    public characterService: CharacterService
   ) { }
  
   ngOnInit() {
     this.toolbarService.title = "Charakter Editor";
     this.toolbarService.saveBtn = true;
+
+    this.characterService.getCharacter("default");
   }
 }

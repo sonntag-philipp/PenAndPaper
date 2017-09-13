@@ -1,7 +1,6 @@
 export class SkillModel {
 
-  constructor(name: string, chance: number){
-    this.chance = chance;
+  constructor(name: string){
     this.name = name;
   }
 

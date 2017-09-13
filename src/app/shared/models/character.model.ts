@@ -1,6 +1,6 @@
+import { SkillTreeModel } from './skill-tree.model';
 import { EffectModel } from './effect.model';
 import { ItemModel } from './item.model';
-import { SkillModel } from './skill.model';
 
 export class CharacterModel {
 
@@ -28,5 +28,5 @@ export class CharacterModel {
   public equipment:   ItemModel[] = [];
   public inventory:   ItemModel[] = [];
   public effects:     EffectModel[] = [];
-  public skills:      SkillModel[] = [];
+  public skillTrees:      SkillTreeModel[] = [];
 }

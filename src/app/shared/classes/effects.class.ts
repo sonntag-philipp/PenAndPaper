@@ -24,4 +24,8 @@ export class Effects {
       this.effects = effects;
       this.subject.next(this.effects.slice());
     }
+    
+    public updateSubject(): void {
+      this.subject.next(this.effects.slice());
+    }
   }

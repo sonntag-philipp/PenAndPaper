@@ -24,4 +24,8 @@ export class Inventory {
     this.items = items;
     this.subject.next(this.items.slice());
   }
+  
+  public updateSubject(): void {
+    this.subject.next(this.items.slice());
+  }
 }

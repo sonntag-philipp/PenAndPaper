@@ -1,3 +1,5 @@
+import { SkillTreeModel } from './../models/skill-tree.model';
+import { SkillModel } from './../models/skill.model';
 import { CharPostResponseModel } from './../models/char-post-response.model';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { HttpClient } from '@angular/common/http';
@@ -26,13 +28,13 @@ export class CharacterService {
     private cookieService: CookieService
   ) {
     this.character = new CharacterModel();
+    this.character.skillTrees[0] = new SkillTreeModel();
 
     this.inventory  = new Inventory(this.character.inventory);
     this.equipment  = new Equipment(this.character.equipment);
-    this.skillTree  = new SkillTree(this.character.skills);
+    this.skillTree  = new SkillTree(this.character.skillTrees[0].skills);
     this.effects    = new Effects(this.character.effects);
   }
-
 
   public postCharacter() {
     console.log("Posting character...");
@@ -49,9 +51,23 @@ export class CharacterService {
   }
 
   public getCharacter(guid: string) {
+
     this.http.get<CharacterModel>("http://api.pnp.delaiyoid.de/character/" + guid).subscribe(
       (result) => {
+        console.log("Charakter was set");
         this.character = result;
+
+        this.skillTree.set(this.character.skillTrees[0].skills);
+        this.skillTree.updateSubject();
+
+        this.effects.set(this.character.effects);
+        this.effects.updateSubject();
+
+        this.inventory.set(this.character.inventory);
+        this.inventory.updateSubject();
+        
+        this.equipment.set(this.character.equipment);
+        this.equipment.updateSubject();
       },
       (error) => {
         prompt("Error while accessing API.");

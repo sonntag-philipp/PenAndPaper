@@ -1,3 +1,4 @@
+import { SkillTreeService } from './shared/services/skill-tree.service';
 import { CharacterService } from './shared/services/character.service';
 import { ToolbarService } from './toolbar/toolbar.service';
 import { SimpleInputDialog } from './shared/dialogs/simple-input-dialog.component';
@@ -47,7 +48,7 @@ import { NewComponent } from './new/new.component';
   entryComponents: [
     SimpleInputDialog
   ],
-  providers: [SocketService, ToolbarService, CharacterService],
+  providers: [SocketService, ToolbarService, CharacterService, SkillTreeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
