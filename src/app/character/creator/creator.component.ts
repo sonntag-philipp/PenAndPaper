@@ -19,6 +19,7 @@ export class CreatorComponent implements OnInit {
   ngOnInit() {
     this.toolbarService.title = "Charakter Editor";
     this.toolbarService.saveBtn = true;
+    this.toolbarService.loadBtn = true;
 
     this.characterService.getCharacter("default");
   }

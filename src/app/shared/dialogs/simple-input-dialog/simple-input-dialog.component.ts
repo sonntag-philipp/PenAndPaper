@@ -15,6 +15,11 @@ export class SimpleInputDialog {
 
   }
 
+  public onBtnClick(item: any) {
+    item.value = true;
+    this.dialogRef.close(this.data);
+  }
+
   public onBtnClose(): void {
     this.dialogRef.close(this.data);
   }

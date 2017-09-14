@@ -1,7 +1,11 @@
+import { AccountService } from './shared/services/account.service';
+import { AccountResolver } from './dashboard/account-resolver.service';
+import { CookieModule, CookieService, CookieBackendService } from 'ngx-cookie';
+import { EffectService } from './shared/services/effects.service';
 import { SkillTreeService } from './shared/services/skill-tree.service';
 import { CharacterService } from './shared/services/character.service';
 import { ToolbarService } from './toolbar/toolbar.service';
-import { SimpleInputDialog } from './shared/dialogs/simple-input-dialog.component';
+import { SimpleInputDialog } from './shared/dialogs/simple-input-dialog/simple-input-dialog.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { GameModule } from './game/game.module';
@@ -23,6 +27,8 @@ import {
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HomeComponent } from './home/home.component';
 import { NewComponent } from './new/new.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CharacterComponent } from './dashboard/character/character.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,9 @@ import { NewComponent } from './new/new.component';
     ToolbarComponent,
     HomeComponent,
     NewComponent,
-    SimpleInputDialog
+    SimpleInputDialog,
+    DashboardComponent,
+    CharacterComponent
   ],
   imports: [
     CharacterModule,
@@ -43,12 +51,13 @@ import { NewComponent } from './new/new.component';
     FlexLayoutModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CookieModule.forRoot()
   ],
   entryComponents: [
     SimpleInputDialog
   ],
-  providers: [SocketService, ToolbarService, CharacterService, SkillTreeService],
+  providers: [SocketService, ToolbarService, CharacterService, SkillTreeService, EffectService, AccountResolver, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

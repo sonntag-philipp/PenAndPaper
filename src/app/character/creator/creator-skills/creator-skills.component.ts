@@ -1,4 +1,5 @@
-import { SimpleInputDialog } from '../../../shared/dialogs/simple-input-dialog.component';
+import { SkillModel } from '../../../shared/models/skill.model';
+import { SimpleInputDialog } from '../../../shared/dialogs/simple-input-dialog/simple-input-dialog.component';
 import { MdDialog } from '@angular/material';
 import { CharacterService } from './../../../shared/services/character.service';
 import { SkillTreeService } from './../../../shared/services/skill-tree.service';
@@ -20,13 +21,27 @@ export class CreatorSkillsComponent implements OnInit {
   private onSkillSelected(item: any, currentIndex: number): void {
     this.dialog.open(SimpleInputDialog, {
       data: {
-        inputs: [{name: "Chance", value: 0, type: "number"}]
+        inputs: [{name: "Chance", value: 0, type: "number"}],
+        title: item.name
       }
     }).afterClosed().subscribe(
       (result) => {
-        this.characterService.skillTree.change(item, result.inputs[0].value);
+        console.log(result);
+        if(result !== undefined) this.characterService.skillTree.change(item, result.inputs[0].value);
       }
-    )
+    );
+  }
+
+  public onBtnAddSkill() {
+    this.dialog.open(SimpleInputDialog, {
+      data: {
+        inputs: [{name: "Name", value: ""}]
+      }
+    }).afterClosed().subscribe(
+      (result) => {
+        if(result !== undefined) this.characterService.skillTree.add(new SkillModel(result.inputs[0].value));
+      }
+    );
   }
 
   ngOnInit() {

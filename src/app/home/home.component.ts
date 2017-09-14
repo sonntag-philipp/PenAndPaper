@@ -1,3 +1,5 @@
+import { CookieService } from 'ngx-cookie';
+import { CharacterService } from './../shared/services/character.service';
 import { Observable } from 'rxjs/Rx';
 import { ToolbarService } from './../toolbar/toolbar.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,10 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public toolbarService: ToolbarService) { }
+  constructor(
+    public toolbarService: ToolbarService,
+    public characterService: CharacterService,
+    public cookieService: CookieService
+  ) { }
 
   ngOnInit() {
     this.toolbarService.saveBtn = false;
+    this.toolbarService.loadBtn = false;
     this.toolbarService.title = "Pen and Paper";
   }
 

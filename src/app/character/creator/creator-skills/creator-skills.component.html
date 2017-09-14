@@ -1,26 +1,30 @@
 <md-card>
   <md-card-title>Skills:</md-card-title>
   <md-card-content>
+
+    <md-progress-bar value="{{ characterService.character.experience / 550 * 100}}"></md-progress-bar>
+    <a style="margin-top: 0%;">{{ characterService.character.experience }}/550 Exp.</a>
+
     <md-tab-group #tabs (selectChange)="characterService.skillTree.set(characterService.character.skillTrees[tabs.selectedIndex].skills);" >
       <md-tab *ngFor="let element of characterService.character.skillTrees; let i = index" [(label)]="characterService.character.skillTrees[i].name" >
+
         <md-table #table [dataSource]="skillTreeService">
           <md-header-row *mdHeaderRowDef="skillTreeService.columns"></md-header-row>
           <md-row (click)="onSkillSelected(row, tabs.selectedIndex);" *mdRowDef="let row; columns: skillTreeService.columns;"></md-row>
-    
           <ng-container mdColumnDef="name">
             <md-header-cell *mdHeaderCellDef>Skill: </md-header-cell>
             <md-cell *mdCellDef="let element">{{ element.name }}</md-cell>
           </ng-container>
-    
           <ng-container mdColumnDef="chance">
             <md-header-cell *mdHeaderCellDef>Chance: </md-header-cell>
             <md-cell *mdCellDef="let element">{{ element.chance }}</md-cell>
           </ng-container>
         </md-table>
+
       </md-tab>
     </md-tab-group>
   </md-card-content>
   <md-card-actions>
-
+    <button md-button color="accent"(click)="onBtnAddSkill();">Skill hinzufügen</button>
   </md-card-actions>
 </md-card>

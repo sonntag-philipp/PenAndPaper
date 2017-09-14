@@ -19,6 +19,10 @@ export class GameSkillsComponent {
     this.gameService = gameService;
   }
 
+  public getSkills(value: string): SkillDataSource {
+    return null;
+  }
+
 }
 
 export class SkillDataSource extends DataSource<any> {

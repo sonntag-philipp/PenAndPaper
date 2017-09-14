@@ -1,7 +1,9 @@
+import { AccountService } from './account.service';
+import { CookieService } from 'ngx-cookie';
+import { EffectModel } from './../models/effect.model';
 import { SkillTreeModel } from './../models/skill-tree.model';
 import { SkillModel } from './../models/skill.model';
 import { CharPostResponseModel } from './../models/char-post-response.model';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { HttpClient } from '@angular/common/http';
 import { Effects } from './../classes/effects.class';
 import { SkillTree } from './../classes/skills-tree.class';
@@ -32,14 +34,14 @@ export class CharacterService {
 
     this.inventory  = new Inventory(this.character.inventory);
     this.equipment  = new Equipment(this.character.equipment);
-    this.skillTree  = new SkillTree(this.character.skillTrees[0].skills);
+    this.skillTree  = new SkillTree(this.character.skillTrees[0].skills, this);
     this.effects    = new Effects(this.character.effects);
   }
 
   public postCharacter() {
     console.log("Posting character...");
 
-    this.http.post<CharPostResponseModel>("http://api.pnp.delaiyoid.de/character/", JSON.stringify(this.character)).subscribe(
+    this.http.post<CharPostResponseModel>("http://localhost:8080/character/", JSON.stringify(this.character)).subscribe(
       (result) => {
         console.log(result);
         this.cookieService.putObject(result.guid , this.character.name);
@@ -52,9 +54,8 @@ export class CharacterService {
 
   public getCharacter(guid: string) {
 
-    this.http.get<CharacterModel>("http://api.pnp.delaiyoid.de/character/" + guid).subscribe(
+    this.http.get<CharacterModel>("http://localhost:8080/character/" + guid).subscribe(
       (result) => {
-        console.log("Charakter was set");
         this.character = result;
 
         this.skillTree.set(this.character.skillTrees[0].skills);

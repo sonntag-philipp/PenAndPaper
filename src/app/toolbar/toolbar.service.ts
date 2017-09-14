@@ -8,4 +8,5 @@ export class ToolbarService {
 
   public title: string;
   public saveBtn: boolean;
+  public loadBtn: boolean;
 }

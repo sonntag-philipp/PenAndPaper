@@ -1,0 +1,10 @@
+<md-card>
+  <md-card-title>
+    Willkommen zurück!
+  </md-card-title>
+  <md-card-content>
+
+  </md-card-content>
+</md-card>
+
+<app-character *ngFor="let item of accountService.account.characters" [character]="item"></app-character>

@@ -4,5 +4,6 @@
   </a>
   <div fxLayout="row" fxFlex="auto" fxLayoutAlign="end"></div>
   
-  <button *ngIf="toolbarService.saveBtn" md-button (click)="characterService.postCharacter();"><a >Speichern</a> <i class="material-icons md-48">save</i></button>
+  <button *ngIf="toolbarService.saveBtn" md-button (click)="onBtnSave();"><a >Speichern</a> <i class="material-icons md-48">cloud_upload</i></button>
+  <button *ngIf="toolbarService.loadBtn" md-button (click)="onBtnLoad();"><a >Laden</a> <i class="material-icons md-48">cloud_download</i></button>
 </md-toolbar>

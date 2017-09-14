@@ -1,3 +1,5 @@
+import { AccountResolver } from './dashboard/account-resolver.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewComponent } from './new/new.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,9 +10,16 @@ import { MainComponent } from './game/main/main.component';
 
 const appRoutes: Routes = [
   { path: 'game', component: MainComponent},
-  { path: '', component: HomeComponent},
+  { 
+    path: '', 
+    component: DashboardComponent,
+
+    children: [
+      {path: ":accountID", component: DashboardComponent, resolve: {account: AccountResolver}}
+    ]
+  },
   { path: 'new', component: NewComponent},
-  { path: 'create', component: CreatorComponent}
+  { path: 'edit', component: CreatorComponent}
 ]
 
 @NgModule({

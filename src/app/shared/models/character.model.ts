@@ -18,6 +18,9 @@ export class CharacterModel {
 
 
   // Game relevant Information
+  public uid: string;
+  public experience: number;
+
   public maxLife: number = 100;
   public life: number = this.maxLife;
 
@@ -28,5 +31,6 @@ export class CharacterModel {
   public equipment:   ItemModel[] = [];
   public inventory:   ItemModel[] = [];
   public effects:     EffectModel[] = [];
+
   public skillTrees:      SkillTreeModel[] = [];
 }

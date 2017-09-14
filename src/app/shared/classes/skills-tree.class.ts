@@ -1,5 +1,5 @@
+import { CharacterService } from '../services/character.service';
 import { Observable } from 'rxjs/Observable';
-import { CharacterService } from './../services/character.service';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { SkillModel } from './../models/skill.model';
@@ -12,7 +12,7 @@ export class SkillTree {
   public skills: SkillModel[];
   public subject: BehaviorSubject<SkillModel[]> = new BehaviorSubject<SkillModel[]>(this.skills);
 
-  constructor(skills: SkillModel[]) {
+  constructor(skills: SkillModel[], private characterService: CharacterService) {
     this.skills = skills;
   }
 
@@ -24,9 +24,9 @@ export class SkillTree {
   }
   
   public change(toChange: SkillModel, changeValue: number): void {
-    if(changeValue > 1000 || changeValue < 0) return;
+    if(changeValue > 100 || changeValue < 0 || changeValue > this.characterService.character.experience) return;
 
-    this.experience -= (changeValue - toChange.chance);
+    this.characterService.character.experience -= (changeValue - toChange.chance);
 
     this.skills[this.skills.indexOf(toChange)].chance = changeValue;
     this.subject.next(this.skills.slice());

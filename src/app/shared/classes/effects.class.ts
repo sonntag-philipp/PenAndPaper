@@ -14,6 +14,12 @@ export class Effects {
       this.effects.push(effect);
       this.subject.next(this.effects.slice());
     }
+    
+    public change(toChange: EffectModel, changeValue: EffectModel): void {
+  
+      this.effects[this.effects.indexOf(toChange)] = changeValue;
+      this.subject.next(this.effects.slice());
+    }
   
     public remove(effect: EffectModel): void {
       this.effects.splice(this.effects.indexOf(effect), 1);
