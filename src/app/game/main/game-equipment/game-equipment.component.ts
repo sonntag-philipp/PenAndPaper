@@ -23,7 +23,7 @@ export class GameEquipmentComponent {
 
   constructor(gameService: GameService, public dialog: MdDialog) { 
     this.gameService = gameService;
-    this.dataSource = new ItemDataSource(gameService.character.equipped, this.gameService);
+    this.dataSource = new ItemDataSource(gameService.character.equipment, this.gameService);
   }
 
   public onSelectItem(item: ItemModel): void{

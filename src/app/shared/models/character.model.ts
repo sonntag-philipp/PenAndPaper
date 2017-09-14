@@ -1,44 +1,36 @@
+import { SkillTreeModel } from './skill-tree.model';
+import { EffectModel } from './effect.model';
 import { ItemModel } from './item.model';
-import { SkillModel } from './skill.model';
+
 export class CharacterModel {
 
+
+  // Personal Information:
   public name: string;
   public title: string;
-  public age: number;
   public nation: string;
+  public profession: string;
+  public gender: string;
+  public religion: string;
 
-  public maxLife: number;
+  public height: number;
+  public age: number;
 
 
-  public skills = {
-    handeln: [],
-    wissen: [],
-    interagieren: []
-  }
+  // Game relevant Information
+  public uid: string;
+  public experience: number;
 
-  public inventory: ItemModel[] = [];
-  public equipped: ItemModel[] = [];
+  public maxLife: number = 100;
+  public life: number = this.maxLife;
 
-  // Statuses
-  public _life: number;
-  set life(life: number) {
-    if(life <= this.maxLife) this._life = life;
-  }
-  get life(): number {
-    return this._life;
-  }
+  public maxMana: number = 50;
+  public mana: number = this.maxMana;
 
-  public maxMana: number;
-  public _mana: number;
-  set mana(mana: number) {
-    if(mana <= this.maxMana) this._mana = mana;
-  }
-  get mana(): number {
-    return this._mana;
-  }
-}
+  
+  public equipment:   ItemModel[] = [];
+  public inventory:   ItemModel[] = [];
+  public effects:     EffectModel[] = [];
 
-class Skills {
-  sectionName: string;
-  skills: SkillModel[];
+  public skillTrees:      SkillTreeModel[] = [];
 }

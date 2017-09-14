@@ -1,3 +1,9 @@
 <md-toolbar color="primary">
-  <a routerLink="/" style="text-decoration: none; color: white;"><span>Pen and Paper</span></a>
+  <a routerLink="/" style="text-decoration: none; color: white;">
+    <span>{{ toolbarService.title }}</span>
+  </a>
+  <div fxLayout="row" fxFlex="auto" fxLayoutAlign="end"></div>
+  
+  <button *ngIf="toolbarService.saveBtn" md-button (click)="onBtnSave();"><a >Speichern</a> <i class="material-icons md-48">cloud_upload</i></button>
+  <button *ngIf="toolbarService.loadBtn" md-button (click)="onBtnLoad();"><a >Laden</a> <i class="material-icons md-48">cloud_download</i></button>
 </md-toolbar>

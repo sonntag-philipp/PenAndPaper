@@ -1,0 +1,33 @@
+<md-card>
+  <md-card-title>Effekte:</md-card-title>
+  <md-card-subtitle>
+    Vorteile und Nachteile deines Charakters
+  </md-card-subtitle>
+  <md-card-content>
+    <md-table #table [dataSource]="effectService">
+      <md-header-row *mdHeaderRowDef="effectService.columns"></md-header-row>
+      <md-row (click)="onEffectSelected(row);" *mdRowDef="let row; columns: effectService.columns;"></md-row>
+
+      <ng-container mdColumnDef="name">
+        <md-header-cell *mdHeaderCellDef>Skill: </md-header-cell>
+        <md-cell *mdCellDef="let element">{{ element.name }}</md-cell>
+      </ng-container>
+      
+      <ng-container mdColumnDef="description">
+        <md-header-cell *mdHeaderCellDef>Beschreibung: </md-header-cell>
+        <md-cell *mdCellDef="let element">{{ element.description }}</md-cell>
+      </ng-container>
+
+      <ng-container mdColumnDef="strength">
+        <md-header-cell *mdHeaderCellDef>Stärke: </md-header-cell>
+        <md-cell *mdCellDef="let element">
+          <a *ngIf="element.strength < 0" style="color: red;">{{ element.strength }}</a>
+          <a *ngIf="element.strength > 0" style="color: green;">{{ element.strength }}</a>
+        </md-cell>
+      </ng-container>
+    </md-table>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button color="accent" (click)="onBtnAddEffect();">Effekt hinzufügen</button>
+  </md-card-actions>
+</md-card>

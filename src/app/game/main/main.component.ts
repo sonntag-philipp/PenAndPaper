@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
+import { CharacterModel } from '../../shared/models/character.model';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(public gameService: GameService) {
+    // this.gameService.character = <CharacterModel> cookieService.getObject("char");
+  }
 
   ngOnInit() {
   }
