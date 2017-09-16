@@ -1,10 +1,21 @@
 <md-card>
   <md-card-title>Herzlich Willkommen!</md-card-title>
   <md-card-content>
-    Hallo, <br>
-    bitte wähle zuerst aus ob du ein neues Spiel starten willst als GameMaster oder ob du einen neuen Character erstellen willst.
+    Gosh!<br>
+    Fiese Orks überfallen die Lande! Schnell, starte ein Spiel oder sie überrennen dich!
   </md-card-content>
+</md-card>
+<div fxLayout="column" fxLayoutAlign="start center" style="margin-top: 1%; margin-bottom: 5%;">
+  <app-login></app-login>
+</div>
+<md-card>
+  <md-card-title>Development:</md-card-title>
+  <md-card-subtitle>
+    Da diese Applikation noch in der Entwicklung ist und nicht alles funktioniert kann man hier die Features testen.
+  </md-card-subtitle>
   <md-card-actions> 
-    <button md-button color="accent" routerLink="./editor">Neuen Charakter erstellen</button>
+    <button md-button color="accent" routerLink="./editor">Editor Component</button>
+    <button md-button color="accent" routerLink="./dashboard/test_account">Dashboard Component</button>
+    <button md-button color="accent" routerLink="./game">Game Component</button>
   </md-card-actions>
 </md-card>

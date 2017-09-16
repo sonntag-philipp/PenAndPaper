@@ -1,3 +1,4 @@
+import { ToolbarService } from './../toolbar/toolbar.service';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,8 @@ export class ErrorPageComponent implements OnInit {
   public message: string;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toolbarService: ToolbarService
   ) { }
 
   ngOnInit() {
@@ -20,6 +22,7 @@ export class ErrorPageComponent implements OnInit {
         this.message = data['message'];
       }
     );
+    this.toolbarService.title = "Pen and Paper - Home";
   }
 
 }

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie';
 import { Observable } from 'rxjs/Rx';
 import { ToolbarService } from './../toolbar/toolbar.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,11 +12,19 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor(
-    public toolbarService: ToolbarService
+    public toolbarService: ToolbarService,
+    private cookieService: CookieService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.toolbarService.title = "Pen and Paper";
+    this.toolbarService.title = "Pen and Paper - Home";
+
+    if(this.cookieService.get("accountID") != undefined) {
+      this.router.navigate(
+        ['dashboard', this.cookieService.get("accountID")]
+      );
+    }
   }
 
 }

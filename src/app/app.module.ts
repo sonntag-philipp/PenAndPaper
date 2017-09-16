@@ -30,6 +30,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CharacterComponent } from './dashboard/character/character.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginComponent } from './home/login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     SimpleDialog,
     DashboardComponent,
     CharacterComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    LoginComponent
   ],
   imports: [
     EditorModule,

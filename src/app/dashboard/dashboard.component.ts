@@ -16,8 +16,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.accountService.account);
-
+    console.log(this.route.snapshot.params["accountID"]);
   }
 
 }

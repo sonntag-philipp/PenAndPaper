@@ -26,8 +26,8 @@ const appRoutes: Routes = [
     component: GameComponent
   },
   { 
-    path: 'dashboard', 
-    component: DashboardComponent,
+    path: 'dashboard/:accountID',
+    component: DashboardComponent
   },
   {
     path: 'not-found',
