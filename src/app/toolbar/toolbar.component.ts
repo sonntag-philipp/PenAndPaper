@@ -1,4 +1,4 @@
-import { SimpleInputDialog } from './../shared/dialogs/simple-input-dialog/simple-input-dialog.component';
+import { SimpleDialog } from '../shared/dialogs/simple-dialog/simple-dialog.component';
 import { MdDialog } from '@angular/material';
 import { CharacterService } from '../shared/services/character.service';
 import { ToolbarService } from './toolbar.service';
@@ -21,7 +21,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   public onBtnLoad() {
-    this.dialog.open(SimpleInputDialog, {
+    this.dialog.open(SimpleDialog, {
       data: {inputs: [{name: "Charakter UID", value: ""}], title: "Charakter Laden"}
     }).afterClosed().subscribe(
       (result) => {

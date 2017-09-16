@@ -1,3 +1,4 @@
+import { ConstantService } from './constants.service';
 import { AccountService } from './account.service';
 import { CookieService } from 'ngx-cookie';
 import { EffectModel } from './../models/effect.model';
@@ -12,6 +13,7 @@ import { Inventory } from './../classes/inventory.class';
 import { CharacterModel } from './../models/character.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import {MdSnackBar} from '@angular/material';
 
 @Injectable()
 export class CharacterService {
@@ -27,7 +29,9 @@ export class CharacterService {
 
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private constantService: ConstantService,
+    private snackBar: MdSnackBar
   ) {
     this.character = new CharacterModel();
     this.character.skillTrees[0] = new SkillTreeModel();
@@ -41,20 +45,22 @@ export class CharacterService {
   public postCharacter() {
     console.log("Posting character...");
 
-    this.http.post<CharPostResponseModel>("http://localhost:8080/character/", JSON.stringify(this.character)).subscribe(
+    this.http.post<CharPostResponseModel>(this.constantService.restURL + "/character/", JSON.stringify(this.character)).subscribe(
       (result) => {
         console.log(result);
         this.cookieService.putObject(result.guid , this.character.name);
       },
       (error) => {
-        prompt("Error while accessing API.");
+        this.snackBar.open("Fehler beim Verbinden zur Datenbank.", "Okay", {
+          duration: 3000
+        });
       }
     )
   }
 
   public getCharacter(guid: string) {
 
-    this.http.get<CharacterModel>("http://localhost:8080/character/" + guid).subscribe(
+    this.http.get<CharacterModel>(this.constantService.restURL + "/character/" + guid).subscribe(
       (result) => {
         this.character = result;
 
@@ -71,7 +77,9 @@ export class CharacterService {
         this.equipment.updateSubject();
       },
       (error) => {
-        prompt("Error while accessing API.");
+        this.snackBar.open("Fehler beim Verbinden zur Datenbank.", "Okay", {
+          duration: 3000
+        });
       }
     )
   }
