@@ -1,4 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { CookieService } from 'ngx-cookie';
+import { MdSnackBar } from '@angular/material';
+import { ConstantService } from './constants.service';
+import { HttpClient, HttpResponseBase } from '@angular/common/http';
 import { CharacterService } from './character.service';
 import { AccountModel } from '../models/account.model';
 import { CharacterModel } from './../models/character.model';
@@ -8,29 +12,66 @@ import { Injectable } from '@angular/core';
 export class AccountService {
 
   constructor(
-    private characterService: CharacterService,
-    private http: HttpClient
+    private http: HttpClient,
+    private constantService: ConstantService,
+    private snackBar: MdSnackBar
   ) { }
 
-  public account: AccountModel;
+  private account: AccountModel = new AccountModel();
+  public characters: CharacterModel[] = [];
 
-  public getAccount(uid: string): AccountModel {
-    this.account = new AccountModel();
-    this.account.uid = uid;
-
-    this.http.get<CharacterModel>("http://localhost:8080/character/test_char").subscribe(
-      (result) => {
-        this.account.characters.push(result);
-      },
-      (error) => {
-        prompt("Error while accessing API.");
+  /**
+   * Removes a character of the character array and of the characterIDs of the account model
+   * and puts the account onto the server.
+   * @param characterID Character ID of the character to be removed.
+   */
+  public removeCharacter(characterID: string) {
+    this.characters.forEach(item => {
+      if(item.uid === characterID) {
+        this.characters.splice(this.characters.indexOf(item), 1);
       }
-    )
-    
+    });
+    this.account.characterIDs.forEach(item => {
+      if(item === characterID) {
+        this.account.characterIDs.splice(this.account.characterIDs.indexOf(item), 1);
+      }
+    });
+  }
+
+  /**
+   * Returns the character ids of the account model as an URL.
+   */
+  public getCharacterIDs(): string {
+    let value: string = "";
+
+    this.account.characterIDs.forEach(item => {
+      value += "/" + item;
+    });
+
+    return value;
+  }
+
+  /**
+   * Adds a characterID to the account model and puts it onto the server.
+   * @param characterID The ID of the character to be added.
+   */
+  public addCharacterID(characterID: string) {
+    this.account.characterIDs.push(characterID);
+  }
+
+  /**
+   * Gets the account model from the backend.
+   * @param username Username of the account model
+   */
+  public getAccount(): AccountModel {
     return this.account;
   }
 
-  public getCharacters(): CharacterModel[] {
-    return this.account.characters;
+  /**
+   * Sets the account of the service.
+   * @param account Account the service account should be set to
+   */
+  public setAccount(account: AccountModel) {
+    this.account = account;
   }
 }

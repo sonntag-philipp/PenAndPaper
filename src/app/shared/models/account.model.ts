@@ -1,6 +1,5 @@
-import { CharacterModel } from './character.model';
 export class AccountModel {
-  uid: string;
+  username: string;
 
-  characters: CharacterModel[] = [];
+  characterIDs: string[] = [];
 }

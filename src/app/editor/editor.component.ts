@@ -16,7 +16,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   ) { }
  
   ngOnInit() {
-    this.toolbarService.title = "Charakter Editor";
+    this.toolbarService.title = "Pen and Paper - Editor";
     this.toolbarService.saveBtn = true;
     this.toolbarService.loadBtn = true;
 

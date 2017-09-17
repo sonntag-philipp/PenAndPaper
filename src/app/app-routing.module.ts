@@ -1,7 +1,6 @@
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { GameComponent } from './game/game.component';
 import { EditorComponent } from './editor/editor.component';
-import { AccountResolver } from './dashboard/account-resolver.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,7 +25,7 @@ const appRoutes: Routes = [
     component: GameComponent
   },
   { 
-    path: 'dashboard/:accountID',
+    path: 'dashboard',
     component: DashboardComponent
   },
   {

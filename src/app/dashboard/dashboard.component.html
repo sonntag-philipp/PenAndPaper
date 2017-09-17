@@ -1,8 +1,17 @@
 <md-card>
   <md-card-title>
-    Willkommen zurück!
+    Willkommen zurück, {{ accountService.account.username }}
   </md-card-title>
-  <md-card-content>
-
-  </md-card-content>
+  <md-card-subtitle>
+    Dies ist dein persönliches Dashboard. Hier kannst du deine Charaktere einsehen und mit Ihnen ein Spiel betreten.
+  </md-card-subtitle>
+  <md-card-actions>
+    <button (click)="onBtnGameStart();" md-button color="accent" disabled>Spiel als Game-Master starten</button>
+    <button (click)="onBtnAddCharacter();"md-button color="accent" disabled>Charakter hinzufügen</button>
+  </md-card-actions>
 </md-card>
+<div fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex="80%" fxLayout="column">
+    <app-character-card style="margin-top: 1%;" [character]="item" *ngFor="let item of accountService.characters"></app-character-card>
+  </div>
+</div>

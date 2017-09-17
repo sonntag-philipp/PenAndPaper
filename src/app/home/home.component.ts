@@ -20,10 +20,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.toolbarService.title = "Pen and Paper - Home";
 
-    if(this.cookieService.get("accountID") != undefined) {
-      this.router.navigate(
-        ['dashboard', this.cookieService.get("accountID")]
-      );
+    if(this.cookieService.get("account_username") != undefined) {
+      this.router.navigate(['dashboard']);
     }
   }
 

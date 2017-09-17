@@ -1,0 +1,25 @@
+<md-card>
+  <div fxLayout="row">
+    <div fxLayout="column" fxFlex="initial">
+      <md-card-title>{{ character.name }}</md-card-title>
+      <md-card-subtitle>{{ character.title }}</md-card-subtitle>
+    </div>
+    <div fxFlex="5%">
+
+    </div>
+    <div fxFlex="auto"> 
+      <h4 style="margin-bottom: 0%; margin-top: 0%;">Leben</h4>
+      <md-progress-bar color="accent" value="{{ character.life / character.maxLife * 100}}"></md-progress-bar>
+      <a style="margin-top: 0%;">{{ character.life }}/{{ character.maxLife }}</a>
+
+      <h4 style="margin-bottom: 0%; margin-top: 0.5%;">Mana</h4>
+      <md-progress-bar color="primary" value="{{ character.mana / character.maxMana * 100}}"></md-progress-bar>
+      <a style="margin-top: 0%;">{{ character.mana }}/{{ character.maxMana }}</a>
+    </div>
+  </div>
+  <md-card-actions>
+    <button (click)="onBtnPlay();" md-button disabled color="accent">Spielen</button>
+    <button (click)="onBtnDelete();" md-button disabled color="accent">Löschen</button>
+  </md-card-actions>
+
+</md-card>
