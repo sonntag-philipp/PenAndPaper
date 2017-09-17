@@ -5,48 +5,48 @@
         <tr>
           <td>
             <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.name" mdInput placeholder="Name" maxlength="30">
+              <input [(ngModel)]="characterService.getCharacter().name" mdInput placeholder="Name" maxlength="30">
             </md-form-field>
           </td>
           <td>
             <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.title" mdInput placeholder="Titel" maxlength="30">
-            </md-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.nation" mdInput placeholder="Volk" maxlength="30">
-            </md-form-field>
-          </td>
-          <td>
-            <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.profession" mdInput placeholder="Profession" maxlength="30">
+              <input [(ngModel)]="characterService.getCharacter().title" mdInput placeholder="Titel" maxlength="30">
             </md-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.height" mdInput placeholder="Größe" type="number">
+              <input [(ngModel)]="characterService.getCharacter().nation" mdInput placeholder="Volk" maxlength="30">
             </md-form-field>
           </td>
           <td>
             <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.age" mdInput placeholder="Alter" type="number">
+              <input [(ngModel)]="characterService.getCharacter().profession" mdInput placeholder="Profession" maxlength="30">
             </md-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.gender" mdInput placeholder="Geschlecht">
+              <input [(ngModel)]="characterService.getCharacter().height" mdInput placeholder="Größe" type="number">
             </md-form-field>
           </td>
           <td>
             <md-form-field style="width: 75%;">
-              <input [(ngModel)]="characterService.character.religion" mdInput placeholder="Religion" maxlength="30">
+              <input [(ngModel)]="characterService.getCharacter().age" mdInput placeholder="Alter" type="number">
+            </md-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.getCharacter().gender" mdInput placeholder="Geschlecht">
+            </md-form-field>
+          </td>
+          <td>
+            <md-form-field style="width: 75%;">
+              <input [(ngModel)]="characterService.getCharacter().religion" mdInput placeholder="Religion" maxlength="30">
             </md-form-field>
           </td>
         </tr>

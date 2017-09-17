@@ -53,6 +53,10 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  public onBtnGameStart() {
+    
+  }
+
   public onBtnAddCharacter() {
     this.router.navigate(['editor']);
   }

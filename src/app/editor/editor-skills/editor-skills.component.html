@@ -2,11 +2,11 @@
   <md-card-title>Skills:</md-card-title>
   <md-card-content>
 
-    <md-progress-bar value="{{ characterService.character.experience / 550 * 100}}"></md-progress-bar>
-    <a style="margin-top: 0%;">{{ characterService.character.experience }}/550 Exp.</a>
+    <md-progress-bar value="{{ characterService.getCharacter().experience / 550 * 100}}"></md-progress-bar>
+    <a style="margin-top: 0%;">{{ characterService.getCharacter().experience }}/550 Exp.</a>
 
-    <md-tab-group #tabs (selectChange)="characterService.skillTree.set(characterService.character.skillTrees[tabs.selectedIndex].skills);" >
-      <md-tab *ngFor="let element of characterService.character.skillTrees; let i = index" [(label)]="characterService.character.skillTrees[i].name" >
+    <md-tab-group #tabs (selectChange)="characterService.skillTree.set(characterService.getCharacter().skillTrees[tabs.selectedIndex].skills);" >
+      <md-tab *ngFor="let element of characterService.getCharacter().skillTrees; let i = index" [(label)]="characterService.getCharacter().skillTrees[i].name" >
 
         <md-table #table [dataSource]="skillTreeService">
           <md-header-row *mdHeaderRowDef="skillTreeService.columns"></md-header-row>
