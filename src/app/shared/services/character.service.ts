@@ -18,7 +18,7 @@ import {MdSnackBar} from '@angular/material';
 @Injectable()
 export class CharacterService {
 
-  public character: CharacterModel = new CharacterModel();
+  private character: CharacterModel = new CharacterModel();
 
   // Classes that provide an array of the explicit data and also an behaviorsubject for any views.
   public inventory: Inventory;
@@ -58,7 +58,28 @@ export class CharacterService {
     )
   }
 
-  public getCharacter(guid: string) {
+  public getCharacter(): CharacterModel {
+    return this.character;
+  }
+
+  public setCharacter(character: CharacterModel) {
+    this.character = character;
+
+    
+    this.skillTree.set(this.character.skillTrees[0].skills);
+    this.skillTree.updateSubject();
+
+    this.effects.set(this.character.effects);
+    this.effects.updateSubject();
+
+    this.inventory.set(this.character.inventory);
+    this.inventory.updateSubject();
+    
+    this.equipment.set(this.character.equipment);
+    this.equipment.updateSubject();
+  }
+
+  /*public getCharacter(guid: string) {
 
     this.http.get<CharacterModel>(this.constantService.restURL + "/character/" + guid).subscribe(
       (result) => {
@@ -82,5 +103,5 @@ export class CharacterService {
         });
       }
     )
-  }
+  }*/
 }

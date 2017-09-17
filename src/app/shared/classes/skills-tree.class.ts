@@ -24,9 +24,9 @@ export class SkillTree {
   }
   
   public change(toChange: SkillModel, changeValue: number): void {
-    if(changeValue > 100 || changeValue < 0 || changeValue > this.characterService.character.experience) return;
+    if(changeValue > 100 || changeValue < 0 || changeValue > this.characterService.getCharacter().experience) return;
 
-    this.characterService.character.experience -= (changeValue - toChange.chance);
+    this.characterService.getCharacter().experience -= (changeValue - toChange.chance);
 
     this.skills[this.skills.indexOf(toChange)].chance = changeValue;
     this.subject.next(this.skills.slice());

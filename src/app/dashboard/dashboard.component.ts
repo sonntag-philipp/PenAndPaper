@@ -1,11 +1,11 @@
-import { CharacterModel } from '../shared/models/character.model';
+import { CharacterModel } from './../shared/models/character.model';
 import { ErrorService } from '../shared/services/error.service';
 import { ConstantService } from './../shared/services/constants.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie';
 import { ToolbarService } from '../toolbar/toolbar.service';
 import { AccountService } from '../shared/services/account.service';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { AccountModel } from './../shared/models/account.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -22,7 +22,8 @@ export class DashboardComponent implements OnInit {
     private cookieService: CookieService,
     private http: HttpClient,
     private constantService: ConstantService,
-    private errorService: ErrorService
+    private errorService: ErrorService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -36,9 +37,8 @@ export class DashboardComponent implements OnInit {
         if(this.accountService.getCharacterIDs() != "") {
           this.http.get<CharacterModel[]>(this.constantService.restURL + "/character" + this.accountService.getCharacterIDs()).subscribe(
             (result) => {
-              this.accountService.characters = result;
-              console.log(result);
-              console.log(this.accountService.getAccount());
+              let characters = [];
+              this.accountService.characters = characters.concat(result);
             },
             (error) => {
               this.errorService.showSnackbar((<HttpErrorResponse> error).status);
@@ -54,6 +54,6 @@ export class DashboardComponent implements OnInit {
   }
 
   public onBtnAddCharacter() {
-
+    this.router.navigate(['editor']);
   }
 }
