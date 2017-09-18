@@ -24,7 +24,8 @@ import {
   MdButtonModule,
   MdInputModule,
   MdSnackBarModule,
-  MdProgressBarModule
+  MdProgressBarModule,
+  MdTooltipModule
 } from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HomeComponent } from './home/home.component';
@@ -58,7 +59,8 @@ import { CharacterCardComponent } from './dashboard/character-card/character-car
     MdButtonModule,
     MdInputModule,
     MdSnackBarModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdTooltipModule
   ],
   entryComponents: [
     SimpleDialog

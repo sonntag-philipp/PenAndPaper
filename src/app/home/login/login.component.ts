@@ -40,17 +40,5 @@ export class LoginComponent {
       }
     );
   }
-  
-  onBtnLogin(username: string, password: string) {
-    this.http.get<AccountModel>(this.constantService.restURL + "/account/" + username).subscribe(
-      (result) => {
-        this.cookieService.put("account_username", username);
-        this.router.navigate(['dashboard']);
-      },
-      (error) => {
-        this.errorService.showSnackbar((<HttpErrorResponse> error).status);
-      }
-    )
-  }
 
 }

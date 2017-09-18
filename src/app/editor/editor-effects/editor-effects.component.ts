@@ -20,14 +20,19 @@ export class EditorEffectsComponent implements OnInit {
 
   public onBtnAddEffect() {
     this.dialog.open(SimpleDialog, {
-      data: {inputs: [
+      data: {
+      inputs: [
         {name: "Name", value: ""}, 
         {name: "Beschreibung", value: ""},
         {name: "Stärke", value: 0, type: "number"}
-      ]}
+      ],
+      buttons: [
+        {name: "Hinzufügen", value: false}
+      ]
+    }
     }).afterClosed().subscribe(
       (result) => {
-        if(result !== undefined) this.characterService.effects.add(new EffectModel(result.inputs[0].value, result.inputs[1].value, result.inputs[2].value,));
+        if(result !== undefined && result.buttons[0].value) this.characterService.effects.add(new EffectModel(result.inputs[0].value, result.inputs[1].value, result.inputs[2].value,));
       }
     )
   }
@@ -35,6 +40,7 @@ export class EditorEffectsComponent implements OnInit {
   public onEffectSelected(item: any) {
     this.dialog.open(SimpleDialog, {
       data: {
+        title: item.name,
         inputs: [
           {name: "Name", value: ""},
           {name: "Stärke", value: item.strength, type: "number"},
@@ -51,7 +57,7 @@ export class EditorEffectsComponent implements OnInit {
             this.characterService.effects.remove(item);
           }
           else {
-            this.characterService.effects.change(item, new EffectModel(result.inputs[0].value, result.inputs[1].value, result.inputs[2].value));
+            this.characterService.effects.change(item, new EffectModel(result.inputs[0].value, result.inputs[2].value, result.inputs[1].value));
           }
         }
       }

@@ -1,0 +1,23 @@
+<md-card style="margin-bottom: 1%;">
+    <md-card-title>
+      {{ characterService.character.name }}
+    </md-card-title>
+    <md-card-subtitle>
+      {{ characterService.character.title }}
+    </md-card-subtitle>
+    <md-card-content>
+        <h4 style="margin-bottom: 0%; margin-top: 0%;">Leben</h4>
+        <md-progress-bar color="accent" value="{{ characterService.character.life / characterService.character.maxLife * 100}}"></md-progress-bar>
+        <a style="margin-top: 0%;">{{ characterService.character.life }}/{{ characterService.character.maxLife }}</a>
+        
+        <h4 style="margin-bottom: 0%; margin-top: 0.5%;">Mana</h4>
+        <md-progress-bar color="primary" value="{{ characterService.character.mana / characterService.character.maxMana * 100}}"></md-progress-bar>
+        <a style="margin-top: 0%;">{{ characterService.character.mana }}/{{ characterService.character.maxMana }}</a>
+    </md-card-content>
+    <md-card-actions>
+      <button (click)="onBtnRemoveMana();" md-button color="accent">Mana entfernen</button>
+      <button (click)="onBtnAddMana();" md-button color="accent">Mana hinzufügen</button>
+      <button (click)="onBtnRemoveLife();" md-button color="accent">Leben entfernen</button>
+      <button (click)="onBtnAddLife();" md-button color="accent">Leben hinzufügen</button>
+    </md-card-actions>
+  </md-card>

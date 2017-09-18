@@ -1,4 +1,8 @@
-.content {
-  margin-top: 1%;
-  margin-bottom: 5%;
+.app-main {
+  padding-top: 70px;
+  height: 100%;
+}
+
+.app-toolbar {
+  height: 70px;
 }

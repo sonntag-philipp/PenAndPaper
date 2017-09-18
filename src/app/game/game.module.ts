@@ -14,6 +14,9 @@ import {
   MdCheckboxModule
 } from '@angular/material';
 import { GameComponent } from './game.component';
+import { GameHeadComponent } from './game-head/game-head.component';
+import { GameSkillsComponent } from './game-skills/game-skills.component';
+import { GameEffectsComponent } from './game-effects/game-effects.component';
 
 @NgModule({
   imports: [
@@ -30,7 +33,10 @@ import { GameComponent } from './game.component';
     MdCheckboxModule
   ],
   declarations: [
-    GameComponent
+    GameComponent,
+    GameHeadComponent,
+    GameSkillsComponent,
+    GameEffectsComponent
   ]
 })
 export class GameModule { }

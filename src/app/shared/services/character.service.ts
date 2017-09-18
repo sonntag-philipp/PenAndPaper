@@ -18,7 +18,25 @@ import {MdSnackBar} from '@angular/material';
 @Injectable()
 export class CharacterService {
 
-  private character: CharacterModel = new CharacterModel();
+  private _character: CharacterModel = new CharacterModel();
+  get character(): CharacterModel {
+    return this._character;
+  }
+  set character(char: CharacterModel) {
+    this._character = char;
+    
+    this.skillTree.set(this.character.skillTrees[0].skills);
+    this.skillTree.updateSubject();
+
+    this.effects.set(this.character.effects);
+    this.effects.updateSubject();
+
+    this.inventory.set(this.character.inventory);
+    this.inventory.updateSubject();
+    
+    this.equipment.set(this.character.equipment);
+    this.equipment.updateSubject();
+  }
 
   // Classes that provide an array of the explicit data and also an behaviorsubject for any views.
   public inventory: Inventory;
@@ -27,13 +45,16 @@ export class CharacterService {
   public effects:   Effects;
 
 
+  
+
+
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
     private constantService: ConstantService,
     private snackBar: MdSnackBar
   ) {
-    this.character = new CharacterModel();
+    this._character = new CharacterModel();
     this.character.skillTrees[0] = new SkillTreeModel();
 
     this.inventory  = new Inventory(this.character.inventory);
@@ -59,11 +80,11 @@ export class CharacterService {
   }
 
   public getCharacter(): CharacterModel {
-    return this.character;
+    return this._character;
   }
 
   public setCharacter(character: CharacterModel) {
-    this.character = character;
+    this._character = character;
 
     
     this.skillTree.set(this.character.skillTrees[0].skills);

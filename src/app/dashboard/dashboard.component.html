@@ -3,11 +3,13 @@
     Willkommen zurück, {{ accountService.getAccount().username }}
   </md-card-title>
   <md-card-subtitle>
-    Dies ist dein persönliches Dashboard. Hier kannst du deine Charaktere einsehen und mit Ihnen ein Spiel betreten.
+    Dies ist dein persönliches Dashboard. Hier kannst du deine Charaktere einsehen und mit ihnen ein Spiel betreten.
   </md-card-subtitle>
   <md-card-actions>
     <button (click)="onBtnGameStart();" md-button color="accent" disabled>Spiel als Game-Master starten</button>
     <button (click)="onBtnAddCharacter();"md-button color="accent" >Charakter hinzufügen</button>
+    <div fxFlex></div>
+    <button (click)="onBtnLogout();" md-raised-button color="accent" >Abmelden</button>
   </md-card-actions>
 </md-card>
 <div fxLayout="row" fxLayoutAlign="center start">

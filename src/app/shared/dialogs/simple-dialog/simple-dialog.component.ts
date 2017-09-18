@@ -19,10 +19,6 @@ export class SimpleDialog {
     item.value = true;
     this.dialogRef.close(this.data);
   }
-
-  public onBtnClose(): void {
-    this.dialogRef.close(this.data);
-  }
   
   private getType(item: any): string {
     if(item.type === null) return "text";

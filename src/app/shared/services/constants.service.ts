@@ -1,3 +1,3 @@
 export class ConstantService {
-  restURL: string = "http://api.delaiyoid.de"
+  restURL: string = "http://localhost:8080"
 }

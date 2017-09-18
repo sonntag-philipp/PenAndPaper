@@ -1,3 +1,4 @@
+import { CharacterService } from '../shared/services/character.service';
 import { ToolbarService } from './../toolbar/toolbar.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,11 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class GameComponent implements OnInit {
 
   constructor(
-    private toolbarService: ToolbarService
+    private toolbarService: ToolbarService,
+    public characterService: CharacterService
   ) { }
 
   ngOnInit() {
-    this.toolbarService.title = "Pen and Paper - Spiel"
+    this.toolbarService.title = "Pen and Paper";
   }
 
 }

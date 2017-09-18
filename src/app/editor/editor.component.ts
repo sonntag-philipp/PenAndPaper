@@ -28,7 +28,6 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     this.http.get<CharacterModel>(this.constantService.restURL + "/character/default/").subscribe(
       (result) => {
-        console.log(result);
         this.characterService.setCharacter(result);
       },
       (error) => {

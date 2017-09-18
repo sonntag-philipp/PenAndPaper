@@ -1,8 +1,9 @@
+import { ErrorService } from './error.service';
 import { Observable } from 'rxjs/Observable';
 import { CookieService } from 'ngx-cookie';
 import { MdSnackBar } from '@angular/material';
 import { ConstantService } from './constants.service';
-import { HttpClient, HttpResponseBase } from '@angular/common/http';
+import { HttpClient, HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 import { CharacterService } from './character.service';
 import { AccountModel } from '../models/account.model';
 import { CharacterModel } from './../models/character.model';
@@ -14,7 +15,8 @@ export class AccountService {
   constructor(
     private http: HttpClient,
     private constantService: ConstantService,
-    private snackBar: MdSnackBar
+    private snackBar: MdSnackBar,
+    private errorService: ErrorService
   ) { }
 
   private account: AccountModel = new AccountModel();
@@ -31,11 +33,22 @@ export class AccountService {
         this.characters.splice(this.characters.indexOf(item), 1);
       }
     });
-    this.account.characterIDs.forEach(item => {
-      if(item === characterID) {
-        this.account.characterIDs.splice(this.account.characterIDs.indexOf(item), 1);
+
+    this.account.characterIDs.splice(this.account.characterIDs.indexOf(characterID), 1);
+
+    console.log(this.account);
+    
+    this.http.put(this.constantService.restURL + "/account/" + this.account.username, JSON.stringify(this.account)).subscribe(
+      (result) => {
+        console.log(result);
+        this.snackBar.open("Charakter erfolgreich gelöscht.", "Okay", {
+          duration: 2000
+        });
+      },
+      (error) => {
+        this.errorService.showSnackbar((<HttpErrorResponse> error).status);
       }
-    });
+    );
   }
 
   /**

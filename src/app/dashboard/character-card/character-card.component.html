@@ -17,9 +17,10 @@
       <a style="margin-top: 0%;">{{ character.mana }}/{{ character.maxMana }}</a>
     </div>
   </div>
-  <md-card-actions>
-    <button (click)="onBtnPlay();" md-button disabled color="accent">Spielen</button>
-    <button (click)="onBtnDelete();" md-button disabled color="accent">Löschen</button>
+  <md-card-actions style="margin-bottom: 0;">
+    <button (click)="onBtnPlay();" md-button color="accent">Spielen</button>
+    <button (click)="onBtnDelete();" md-button color="accent">Löschen</button>
   </md-card-actions>
+  <md-card-footer fxLayout="row" fxLayoutAlign="end start">ID: {{ character.uid }}</md-card-footer>
 
 </md-card>

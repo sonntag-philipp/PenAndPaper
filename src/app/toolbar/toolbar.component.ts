@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CharacterModel } from '../shared/models/character.model';
 import { CharPostResponseModel } from './../shared/models/char-post-response.model';
 import { AccountService } from '../shared/services/account.service';
@@ -5,7 +6,7 @@ import { ErrorService } from './../shared/services/error.service';
 import { ConstantService } from './../shared/services/constants.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SimpleDialog } from '../shared/dialogs/simple-dialog/simple-dialog.component';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdSnackBar } from '@angular/material';
 import { CharacterService } from '../shared/services/character.service';
 import { ToolbarService } from './toolbar.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,7 +25,9 @@ export class ToolbarComponent implements OnInit {
     private dialog: MdDialog,
     private http: HttpClient,
     private constantService: ConstantService,
-    private errorService: ErrorService
+    private errorService: ErrorService,
+    private snackBar: MdSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -32,7 +35,15 @@ export class ToolbarComponent implements OnInit {
 
   public onBtnLoad() {
     this.dialog.open(SimpleDialog, {
-      data: {inputs: [{name: "Charakter ID", value: ""}], title: "Charakter Laden"}
+      data: {
+        title: "Charakter laden",
+        inputs: [
+          {name: "Charakter ID", value: ""}
+        ],
+        buttons: [
+          {name: "Okay", value: false}
+        ]
+      }
     }).afterClosed().subscribe(
       (result) => {
         if(result !== undefined) {
@@ -54,10 +65,13 @@ export class ToolbarComponent implements OnInit {
 
         this.http.put(this.constantService.restURL + "/account/" + this.accountService.getAccount().username, this.accountService.getAccount()).subscribe(
           (result) => {
-            console.log(result);
+            this.snackBar.open("Account wurde gespeichert", "Okay", {
+              duration: 2000
+            });
+            this.router.navigate(['dashboard']);
           },
           (error) => {
-            console.log(error);
+            this.errorService.showSnackbar((<HttpErrorResponse> error).status);
           }
         )
       },

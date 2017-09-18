@@ -57,6 +57,13 @@ export class DashboardComponent implements OnInit {
     
   }
 
+  public onBtnLogout() {
+    this.cookieService.remove("account_username");
+    this.router.navigate(['']);
+    this.accountService.setAccount(new AccountModel());
+    this.accountService.characters = new Array<CharacterModel>();
+  }
+
   public onBtnAddCharacter() {
     this.router.navigate(['editor']);
   }
