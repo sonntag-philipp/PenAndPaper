@@ -1,3 +1,5 @@
+import { EquipmentService } from './shared/services/equipment.service';
+import { InventoryService } from './shared/services/inventory.service';
 import { ErrorService } from './shared/services/error.service';
 import { ConstantService } from './shared/services/constants.service';
 import { SimpleDialog } from './shared/dialogs/simple-dialog/simple-dialog.component';
@@ -25,13 +27,14 @@ import {
   MdInputModule,
   MdSnackBarModule,
   MdProgressBarModule,
-  MdTooltipModule
+  MdTooltipModule,
+  MdCheckboxModule,
+  MdRadioModule
 } from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { LoginComponent } from './home/login/login.component';
 import { CharacterCardComponent } from './dashboard/character-card/character-card.component';
 
 @NgModule({
@@ -42,7 +45,6 @@ import { CharacterCardComponent } from './dashboard/character-card/character-car
     SimpleDialog,
     DashboardComponent,
     ErrorPageComponent,
-    LoginComponent,
     CharacterCardComponent
   ],
   imports: [
@@ -60,7 +62,9 @@ import { CharacterCardComponent } from './dashboard/character-card/character-car
     MdInputModule,
     MdSnackBarModule,
     MdProgressBarModule,
-    MdTooltipModule
+    MdTooltipModule,
+    MdCheckboxModule,
+    MdRadioModule
   ],
   entryComponents: [
     SimpleDialog
@@ -69,6 +73,8 @@ import { CharacterCardComponent } from './dashboard/character-card/character-car
     ToolbarService, 
     CharacterService, 
     SkillTreeService, 
+    InventoryService,
+    EquipmentService,
     EffectService, 
     AccountService,
     ConstantService,

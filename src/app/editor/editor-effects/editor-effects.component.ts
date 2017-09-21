@@ -43,11 +43,12 @@ export class EditorEffectsComponent implements OnInit {
         title: item.name,
         inputs: [
           {name: "Name", value: ""},
-          {name: "Stärke", value: item.strength, type: "number"},
-          {name: "Beschreibung", value: item.description}
+          {name: "Beschreibung", value: item.description},
+          {name: "Stärke", value: item.strength, type: "number"}
         ],
         buttons: [
-          {name: "Löschen", value: false}
+          {name: "Löschen", value: false},
+          {name: "Okay", value: false}
         ]
       } 
     }).afterClosed().subscribe(

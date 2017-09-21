@@ -12,7 +12,7 @@ export class SimpleDialog {
     public dialogRef: MdDialogRef<any>, 
     @Inject(MD_DIALOG_DATA) public data: any
   ) { 
-
+    console.log(data);
   }
 
   public onBtnClick(item: any) {

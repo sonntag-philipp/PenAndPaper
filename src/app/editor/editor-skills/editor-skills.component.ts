@@ -21,8 +21,13 @@ export class EditorSkillsComponent implements OnInit {
   private onSkillSelected(item: any, currentIndex: number): void {
     this.dialog.open(SimpleDialog, {
       data: {
-        inputs: [{name: "Chance", value: 0, type: "number"}],
-        title: item.name
+        title: item.name,
+        buttons: [
+          {name: "Okay", value: false}
+        ],
+        inputs: [
+          {name: "Chance", value: 0, type: "number"}
+        ]
       }
     }).afterClosed().subscribe(
       (result) => {
@@ -35,6 +40,9 @@ export class EditorSkillsComponent implements OnInit {
   public onBtnAddSkill() {
     this.dialog.open(SimpleDialog, {
       data: {
+        buttons: [
+          {name: "Okay", value: false}
+        ],
         inputs: [{name: "Name", value: ""}]
       }
     }).afterClosed().subscribe(

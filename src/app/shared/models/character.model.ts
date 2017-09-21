@@ -6,12 +6,12 @@ export class CharacterModel {
 
 
   // Personal Information:
-  public name: string;
-  public title: string;
-  public nation: string;
-  public profession: string;
-  public gender: string;
-  public religion: string;
+  public name: string = "";
+  public title: string = "";
+  public nation: string = "";
+  public profession: string = "";
+  public gender: string = "";
+  public religion: string = "";
 
   public height: number;
   public age: number;

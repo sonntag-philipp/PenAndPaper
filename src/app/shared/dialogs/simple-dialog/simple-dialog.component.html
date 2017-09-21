@@ -1,10 +1,18 @@
-<h3 style="margin-bottom: 0.0%;" md-dialog-title>{{ data.title }}</h3>
-<p style="margin-top: 0.5%;">{{ data.text }}</p>
-<md-dialog-content>
-  <md-form-field *ngFor="let item of data.inputs">
-    <input mdInput [(ngModel)]="item.value" placeholder="{{ item.name }}:" type="{{ getType(item) }}">
-  </md-form-field>
-</md-dialog-content>
-<md-dialog-actions>
-  <button md-button color="accent" *ngFor="let item of data.buttons" (click)="onBtnClick(item);">{{ item.name }}</button>
-</md-dialog-actions>
+<div style="padding: -24px;">
+  <h3 style="margin-bottom: 0.0%;" md-dialog-title>{{ data.title }}</h3>
+  <p style="margin-top: 0.5%;">{{ data.text }}</p>
+  <md-dialog-content>
+    <md-form-field *ngFor="let item of data.inputs">
+      <input mdInput [(ngModel)]="item.value" placeholder="{{ item.name }}:" type="{{ getType(item) }}">
+    </md-form-field>
+    <md-checkbox *ngFor="let item of data.checkboxes" [(ngModel)]="item.checked">{{ item.name }}</md-checkbox>
+    <div *ngIf="data.radiogroups !== undefined">
+      <md-radio-group *ngFor="let radiogroup of data.radiogroups" [(ngModel)]="radiogroup.value">
+        <md-radio-button *ngFor="let button of radiogroup" value="{{ button.name }}">{{ button.name }}</md-radio-button>
+      </md-radio-group>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button color="accent" *ngFor="let item of data.buttons" (click)="onBtnClick(item);">{{ item.name }}</button>
+  </md-dialog-actions>
+</div>

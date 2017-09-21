@@ -17,6 +17,8 @@ import { GameComponent } from './game.component';
 import { GameHeadComponent } from './game-head/game-head.component';
 import { GameSkillsComponent } from './game-skills/game-skills.component';
 import { GameEffectsComponent } from './game-effects/game-effects.component';
+import { GameInventoryComponent } from './game-inventory/game-inventory.component';
+import { GameEquipmentComponent } from './game-equipment/game-equipment.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { GameEffectsComponent } from './game-effects/game-effects.component';
     GameComponent,
     GameHeadComponent,
     GameSkillsComponent,
-    GameEffectsComponent
+    GameEffectsComponent,
+    GameInventoryComponent,
+    GameEquipmentComponent
   ]
 })
 export class GameModule { }

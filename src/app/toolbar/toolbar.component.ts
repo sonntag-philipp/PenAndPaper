@@ -59,6 +59,9 @@ export class ToolbarComponent implements OnInit {
   }
   
   public onBtnSave() {
+    if(this.characterService.character.name === undefined || this.characterService.character.title === undefined) return;
+    if(this.characterService.character.name.trim() === "" || this.characterService.character.title.trim() === "") return;
+
     this.http.post<CharPostResponseModel>(this.constantService.restURL + "/character/", JSON.stringify(this.characterService.getCharacter())).subscribe(
       (result) => {
         this.accountService.addCharacterID(result.guid);

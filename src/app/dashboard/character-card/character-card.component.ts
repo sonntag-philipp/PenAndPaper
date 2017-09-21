@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie';
 import { CharacterService } from '../../shared/services/character.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -22,14 +23,15 @@ export class CharacterCardComponent implements OnInit {
     private accountService: AccountService,
     private dialog: MdDialog,
     private errorService: ErrorService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
   }
 
   public onBtnPlay() {
-    this.characterService.setCharacter(this.character);
+    this.cookieService.put("game_character", this.character.uid);
     this.router.navigate(['game']);
   }
 
@@ -37,6 +39,7 @@ export class CharacterCardComponent implements OnInit {
     this.dialog.open(SimpleDialog, {
       data: {
         title: this.character.name + " wirklich löschen?",
+        text: "Der Charakter wird nur von deinem Account entfernt.",
         buttons: [
           {name: "Ja", value: false},
           {name: "Nein", value: false}

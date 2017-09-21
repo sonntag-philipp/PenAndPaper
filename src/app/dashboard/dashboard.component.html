@@ -12,7 +12,7 @@
     <button (click)="onBtnLogout();" md-raised-button color="accent" >Abmelden</button>
   </md-card-actions>
 </md-card>
-<div fxLayout="row" fxLayoutAlign="center start">
+<div fxLayout="row" fxLayoutAlign="center start" style="margin-bottom: 5%;">
   <div fxFlex="80%" fxLayout="column">
     <app-character-card style="margin-top: 1%;" [character]="item" *ngFor="let item of accountService.characters"></app-character-card>
   </div>
